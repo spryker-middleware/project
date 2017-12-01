@@ -28,9 +28,9 @@ abstract class AbstractFileContentIterator extends AbstractProxyIterator
 
     /**
      * @param string $fileName
-     * @param \Generated\Shared\Transfer\IteratorSettingsTransfer|null $settings
+     * @param \Generated\Shared\Transfer\IteratorSettingsTransfer $settings
      */
-    public function __construct(string $fileName, IteratorSettingsTransfer $settings = null)
+    public function __construct(string $fileName, IteratorSettingsTransfer $settings)
     {
         parent::__construct($settings);
         $this->fileName = $fileName;

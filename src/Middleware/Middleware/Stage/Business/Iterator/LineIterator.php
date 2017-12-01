@@ -1,10 +1,12 @@
 <?php
 
+
 namespace Middleware\Middleware\Stage\Business\Iterator;
+
 
 use SplFileObject;
 
-class JsonIterator extends AbstractFileContentIterator
+class LineIterator extends AbstractFileContentIterator
 {
     /**
      * @return void
@@ -22,6 +24,6 @@ class JsonIterator extends AbstractFileContentIterator
      */
     protected function parseCurrentAsArray($current): array
     {
-        return json_decode($current, true);
+        return [$current];
     }
 }

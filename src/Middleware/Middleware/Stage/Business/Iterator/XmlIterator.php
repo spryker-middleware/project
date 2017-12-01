@@ -46,9 +46,9 @@ class XmlIterator implements Iterator
     /**
      * @param string $fileName
      * @param string $rootNodeName
-     * @param \Generated\Shared\Transfer\IteratorSettingsTransfer|null $settings
+     * @param \Generated\Shared\Transfer\IteratorSettingsTransfer $settings
      */
-    public function __construct(string $fileName, string $rootNodeName, IteratorSettingsTransfer $settings = null)
+    public function __construct(string $fileName, string $rootNodeName, IteratorSettingsTransfer $settings)
     {
         $this->fileName = $fileName;
         $this->settings = $settings;
