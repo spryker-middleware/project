@@ -8,6 +8,8 @@ use Spryker\Zed\Development\Communication\Console\CodePhpMessDetectorConsole;
 use Spryker\Zed\Development\Communication\Console\CodeStyleSnifferConsole;
 use Spryker\Zed\Development\Communication\Console\CodeTestConsole;
 use Spryker\Zed\Kernel\Container;
+use Spryker\Zed\Transfer\Communication\Console\GeneratorConsole;
+use Spryker\Zed\Transfer\Communication\Console\ValidatorConsole;
 
 class ConsoleDependencyProvider extends SprykerDependencyProvider
 {
@@ -21,10 +23,12 @@ class ConsoleDependencyProvider extends SprykerDependencyProvider
     public function getConsoleCommands(Container $container)
     {
         $commands = [];
+        $commands[] = new GeneratorConsole();
         if (Environment::getEnvironment() == self::DEV_ENVIRONMENT) {
             $commands[] = new CodeTestConsole();
             $commands[] = new CodeStyleSnifferConsole();
             $commands[] = new CodePhpMessDetectorConsole();
+            $commands[] = new ValidatorConsole();
         }
         return $commands;
     }
