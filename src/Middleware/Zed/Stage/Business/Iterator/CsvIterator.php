@@ -1,5 +1,5 @@
 <?php
-namespace Middleware\Middleware\Stage\Business\Iterator;
+namespace  Middleware\Zed\Stage\Business\Iterator;
 
 use SplFileObject;
 
