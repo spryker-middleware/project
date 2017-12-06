@@ -1,10 +1,11 @@
 <?php
 
-namespace  Middleware\Zed\Stage\Business\Iterator;
+
+namespace Middleware\Zed\Process\Business\Iterator;
 
 use SplFileObject;
 
-class JsonIterator extends AbstractFileContentIterator
+class LineIterator extends AbstractFileContentIterator
 {
     /**
      * @return void
@@ -22,6 +23,6 @@ class JsonIterator extends AbstractFileContentIterator
      */
     protected function parseCurrentAsArray($current): array
     {
-        return json_decode($current, true);
+        return [$current];
     }
 }

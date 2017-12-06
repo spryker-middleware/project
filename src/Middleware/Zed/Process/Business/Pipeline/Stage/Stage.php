@@ -1,18 +1,18 @@
 <?php
 
-namespace Middleware\Middleware\Pipeline\Business\Stage;
+namespace  Middleware\Zed\Process\Business\Pipeline\Stage;
 
-use Middleware\Middleware\Pipeline\Business\StagePLugin\StagePluginInterface;
+use Middleware\Zed\Process\Business\Pipeline\StagePLugin\StagePluginInterface;
 
 class Stage implements StageInterface
 {
     /**
-     * @var \Middleware\Middleware\Pipeline\Business\StagePlugin\StagePluginInterface
+     * @var \Middleware\Zed\Process\Business\Pipeline\StagePlugin\StagePluginInterface
      */
     protected $stagePlugin;
 
     /**
-     * @param \Middleware\Middleware\Pipeline\Business\StagePlugin\StagePluginInterface $stagePlugin
+     * @param \Middleware\Zed\Process\Business\Pipeline\StagePlugin\StagePluginInterface $stagePlugin
      */
     public function __construct(StagePluginInterface $stagePlugin)
     {

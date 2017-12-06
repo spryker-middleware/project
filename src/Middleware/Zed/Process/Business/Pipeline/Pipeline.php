@@ -1,12 +1,12 @@
 <?php
-namespace Middleware\Middleware\Pipeline\Pipeline\Business;
+namespace Middleware\Zed\Process\Business\Pipeline;
 
 use League\Pipeline\ProcessorInterface;
 
 class Pipeline implements PipelineInterface
 {
     /**
-     * @var \Middleware\Middleware\Pipeline\Business\Stage\StageInterface[]
+     * @var \Middleware\Zed\Process\Business\Pipeline\Stage\StageInterface[]
      */
     protected $stages = [];
 
@@ -17,7 +17,7 @@ class Pipeline implements PipelineInterface
 
     /**
      * @param \League\Pipeline\ProcessorInterface $processor
-     * @param \Middleware\Middleware\Pipeline\Business\Stage\StageInterface[] $stages
+     * @param \Middleware\Zed\Process\Business\Pipeline\Stage\StageInterface[] $stages
      */
     public function __construct(ProcessorInterface $processor, array $stages)
     {
@@ -28,7 +28,7 @@ class Pipeline implements PipelineInterface
     /**
      * Create a new pipeline with an appended stage.
      *
-     * @param \Middleware\Middleware\Pipeline\Business\Stage\StageInterface|callable $stage
+     * @param \Middleware\Zed\Process\Business\Pipeline\Stage\StageInterface|callable $stage
      *
      * @return static
      */
