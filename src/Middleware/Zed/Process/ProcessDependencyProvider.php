@@ -1,7 +1,6 @@
 <?php
 namespace Middleware\Zed\Process;
 
-use Middleware\Zed\Stage\Business\Iterator\CsvIterator;
 use Spryker\Zed\Kernel\AbstractBundleDependencyProvider;
 use Spryker\Zed\Kernel\Container;
 

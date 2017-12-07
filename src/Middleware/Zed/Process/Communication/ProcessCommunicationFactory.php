@@ -3,14 +3,17 @@ namespace Middleware\Zed\Process\Communication;
 
 use Generated\Shared\Transfer\IteratorSettingsTransfer;
 use Generated\Shared\Transfer\ProcessSettingsTransfer;
+use Iterator;
 use League\Pipeline\FingersCrossedProcessor;
+use Middleware\Zed\Process\Business\Iterator\CsvIterator;
 use Middleware\Zed\Process\Business\Pipeline\Pipeline;
 use Middleware\Zed\Process\Business\Pipeline\PipelineInterface;
 use Middleware\Zed\Process\Business\Pipeline\Stage\Stage;
+use Middleware\Zed\Process\Business\Pipeline\Stage\StageInterface;
 use Middleware\Zed\Process\Business\Pipeline\StagePlugin\StagePluginInterface;
 use Middleware\Zed\Process\Business\Process\Process;
+use Middleware\Zed\Process\Business\Process\ProcessInterface;
 use Middleware\Zed\Process\ProcessDependencyProvider;
-use Middleware\Zed\Stage\Business\Iterator\CsvIterator;
 use Spryker\Zed\Kernel\Communication\AbstractCommunicationFactory;
 
 /**
@@ -23,7 +26,7 @@ class ProcessCommunicationFactory extends AbstractCommunicationFactory
      *
      * @return \Middleware\Zed\Process\Business\Process\ProcessInterface
      */
-    public function createProcess(ProcessSettingsTransfer $processSettingsTransfer)
+    public function createProcess(ProcessSettingsTransfer $processSettingsTransfer): ProcessInterface
     {
         return new Process(
             $this->getProcessIterator($processSettingsTransfer),
@@ -36,7 +39,7 @@ class ProcessCommunicationFactory extends AbstractCommunicationFactory
      *
      * @return array
      */
-    protected function getStagePluginsListForProcess($processName):array
+    protected function getStagePluginsListForProcess(string $processName): array
     {
         $stages = $this->getProvidedDependency(ProcessDependencyProvider::MIDDLEWARE_PROCESS_STAGES);
         return $stages[$processName];
@@ -47,7 +50,7 @@ class ProcessCommunicationFactory extends AbstractCommunicationFactory
      *
      * @return \Iterator
      */
-    protected function getProcessIterator($processSettingsTransfer)
+    protected function getProcessIterator(ProcessSettingsTransfer $processSettingsTransfer): Iterator
     {
         $iterators = $this->getProcessIteratorsList();
         return $iterators[$processSettingsTransfer->getName()]($processSettingsTransfer->getIteratorSettings());
@@ -56,21 +59,21 @@ class ProcessCommunicationFactory extends AbstractCommunicationFactory
     /**
      * @return array
      */
-    protected function getProcessIteratorsList()
+    protected function getProcessIteratorsList(): array
     {
         return [
-            ProcessDependencyProvider::PRODUCT_IMPORT_PROCESS => function(IteratorSettingsTransfer $iteratorSettingsTransfer) {
+            ProcessDependencyProvider::PRODUCT_IMPORT_PROCESS => function (IteratorSettingsTransfer $iteratorSettingsTransfer) {
                 return $this->createProductImportIterator($iteratorSettingsTransfer);
-            }
+            },
         ];
     }
 
     /**
-     * @param \Generated\Shared\Transfer\IteratorSettingsTransfer
+     * @param \Generated\Shared\Transfer\IteratorSettingsTransfer $iteratorSettingsTransfer
      *
      * @return \Iterator
      */
-    protected function createProductImportIterator($iteratorSettingsTransfer)
+    protected function createProductImportIterator(IteratorSettingsTransfer $iteratorSettingsTransfer): Iterator
     {
         return new CsvIterator($this->getConfig()->getProductImportPath(), $iteratorSettingsTransfer);
     }
@@ -80,7 +83,7 @@ class ProcessCommunicationFactory extends AbstractCommunicationFactory
      *
      * @return \Middleware\Zed\Process\Business\Pipeline\PipelineInterface
      */
-    public function createPipeline(array $stagePlugins)
+    public function createPipeline(array $stagePlugins): PipelineInterface
     {
         return new Pipeline(
             $this->createPipelineProcessor(),
@@ -93,7 +96,7 @@ class ProcessCommunicationFactory extends AbstractCommunicationFactory
      *
      * @return \Middleware\Zed\Process\Business\Pipeline\Stage\StageInterface[]
      */
-    protected function getStages(array $stagePlugins)
+    protected function getStages(array $stagePlugins): array
     {
         $stages = [];
         foreach ($stagePlugins as $stagePlugin) {
@@ -108,7 +111,7 @@ class ProcessCommunicationFactory extends AbstractCommunicationFactory
      *
      * @return \Middleware\Zed\Process\Business\Pipeline\Stage\StageInterface
      */
-    protected function createStage(StagePluginInterface $stagePlugin)
+    protected function createStage(StagePluginInterface $stagePlugin): StageInterface
     {
         return new Stage($stagePlugin);
     }
@@ -116,7 +119,7 @@ class ProcessCommunicationFactory extends AbstractCommunicationFactory
     /**
      * @return \League\Pipeline\FingersCrossedProcessor
      */
-    public function createPipelineProcessor()
+    public function createPipelineProcessor(): FingersCrossedProcessor
     {
         return new FingersCrossedProcessor();
     }
