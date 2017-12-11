@@ -2,6 +2,7 @@
 
 namespace Middleware\Zed\Console;
 
+use Middleware\Zed\Process\Communication\Console\ProcessConsole;
 use Spryker\Shared\Config\Environment;
 use Spryker\Zed\Console\ConsoleDependencyProvider as SprykerDependencyProvider;
 use Spryker\Zed\Development\Communication\Console\CodePhpMessDetectorConsole;
@@ -24,6 +25,7 @@ class ConsoleDependencyProvider extends SprykerDependencyProvider
     {
         $commands = [];
         $commands[] = new GeneratorConsole();
+        $commands[] = new ProcessConsole();
         if (Environment::getEnvironment() == self::DEV_ENVIRONMENT) {
             $commands[] = new CodeTestConsole();
             $commands[] = new CodeStyleSnifferConsole();

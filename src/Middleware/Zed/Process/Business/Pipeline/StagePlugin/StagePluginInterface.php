@@ -1,5 +1,5 @@
 <?php
-namespace Middleware\Middleware\Pipeline\Business\StagePlugin;
+namespace  Middleware\Zed\Process\Business\Pipeline\StagePlugin;
 
 interface StagePluginInterface
 {

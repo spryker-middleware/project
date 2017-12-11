@@ -1,7 +1,7 @@
 <?php
 
 
-namespace  Middleware\Zed\Stage\Business\Iterator;
+namespace Middleware\Zed\Process\Business\Iterator;
 
 use Generated\Shared\Transfer\IteratorSettingsTransfer;
 use Iterator;
