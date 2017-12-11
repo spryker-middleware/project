@@ -21,6 +21,7 @@ $config[KernelConstants::PROJECT_NAMESPACES] = [
     'Middleware',
 ];
 $config[KernelConstants::CORE_NAMESPACES] = [
+    'SprykerMiddleware',
     'SprykerEco',
     'Spryker',
 ];

@@ -1,6 +1,7 @@
 <?php
 namespace Middleware\Zed\Process;
 
+use Middleware\Zed\Process\Communication\Plugin\ProductImportMapperStagePlugin;
 use SprykerMiddleware\Zed\Process\ProcessDependencyProvider as SprykerMiddlewareProcessDependencyProvider;
 
 class ProcessDependencyProvider extends SprykerMiddlewareProcessDependencyProvider
@@ -14,9 +15,7 @@ class ProcessDependencyProvider extends SprykerMiddlewareProcessDependencyProvid
     {
         $stages = [
             static::PRODUCT_IMPORT_PROCESS => [
-                //plugin1
-                //plugin2
-                //....
+                new ProductImportMapperStagePlugin(),
             ],
         ];
 

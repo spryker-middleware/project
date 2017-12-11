@@ -3,8 +3,10 @@ namespace Middleware\Zed\Process\Communication;
 
 use Generated\Shared\Transfer\IteratorSettingsTransfer;
 use Iterator;
+use Middleware\Zed\Process\Business\Mapper\Map\ProductImportMap;
 use Middleware\Zed\Process\ProcessDependencyProvider;
-use SprykerMiddleware\Zed\Process\Business\Iterator\CsvIterator;
+use SprykerMiddleware\Zed\Process\Business\Iterator\JsonIterator;
+use SprykerMiddleware\Zed\Process\Business\Mapper\Map\MapInterface;
 use SprykerMiddleware\Zed\Process\Communication\ProcessCommunicationFactory as SprykerMiddlewareProcessCommunicationFactory;
 
 /**
@@ -12,6 +14,14 @@ use SprykerMiddleware\Zed\Process\Communication\ProcessCommunicationFactory as S
  */
 class ProcessCommunicationFactory extends SprykerMiddlewareProcessCommunicationFactory
 {
+    /**
+     * @return \SprykerMiddleware\Zed\Process\Business\Mapper\Map\MapInterface
+     */
+    public function createProductImportMap(): MapInterface
+    {
+        return new ProductImportMap();
+    }
+
     /**
      * @return array
      */
@@ -31,6 +41,7 @@ class ProcessCommunicationFactory extends SprykerMiddlewareProcessCommunicationF
      */
     protected function createProductImportIterator(IteratorSettingsTransfer $iteratorSettingsTransfer): Iterator
     {
-        return new CsvIterator($this->getConfig()->getProductImportPath(), $iteratorSettingsTransfer);
+        $iteratorSettingsTransfer->setParseAsArray(true);
+        return new JsonIterator($this->getConfig()->getProductImportPath(), $iteratorSettingsTransfer);
     }
 }
