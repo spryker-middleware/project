@@ -2,15 +2,16 @@
 
 namespace Middleware\Zed\Console;
 
-use Middleware\Zed\Process\Communication\Console\ProcessConsole;
 use Spryker\Shared\Config\Environment;
 use Spryker\Zed\Console\ConsoleDependencyProvider as SprykerDependencyProvider;
+use Spryker\Zed\Development\Communication\Console\CodeArchitectureSnifferConsole;
 use Spryker\Zed\Development\Communication\Console\CodePhpMessDetectorConsole;
 use Spryker\Zed\Development\Communication\Console\CodeStyleSnifferConsole;
 use Spryker\Zed\Development\Communication\Console\CodeTestConsole;
 use Spryker\Zed\Kernel\Container;
 use Spryker\Zed\Transfer\Communication\Console\GeneratorConsole;
 use Spryker\Zed\Transfer\Communication\Console\ValidatorConsole;
+use SprykerMiddleware\Zed\Process\Communication\Console\ProcessConsole;
 
 class ConsoleDependencyProvider extends SprykerDependencyProvider
 {
@@ -30,6 +31,7 @@ class ConsoleDependencyProvider extends SprykerDependencyProvider
             $commands[] = new CodeTestConsole();
             $commands[] = new CodeStyleSnifferConsole();
             $commands[] = new CodePhpMessDetectorConsole();
+            $commands[] = new CodeArchitectureSnifferConsole();
             $commands[] = new ValidatorConsole();
         }
         return $commands;

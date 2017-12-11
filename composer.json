@@ -5,17 +5,14 @@
     "license": "MIT",
     "require": {
         "php": ">=7.1",
-        "league/pipeline": "^0.3.0",
-        "spryker/console": "^3.0.0",
-        "spryker/development": "^3.0.0",
-        "spryker/transfer": "^3.4.0"
+        "spryker-middleware/process": "dev-dev"
     },
     "require-dev": {
         "php-mock/php-mock": "^1.0",
         "phploc/phploc": "^3.0.1",
         "phpmd/phpmd": "~2.4.3",
         "phpunit/phpunit": "^5.0",
-        "spryker/architecture-sniffer": "^0.3.0",
+        "spryker/architecture-sniffer": "dev-master",
         "spryker/code-sniffer": "*"
     },
     "autoload": {
@@ -37,6 +34,10 @@
         {
             "type": "git",
             "url": "git@github.com:spryker/architecture-sniffer.git"
+        },
+        {
+            "type": "git",
+            "url": "git@github.com:spryker-middleware/process.git"
         }
     ]
 }
