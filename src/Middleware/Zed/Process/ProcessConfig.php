@@ -3,9 +3,9 @@
 namespace Middleware\Zed\Process;
 
 use Middleware\Shared\Process\ProcessConstants;
-use Spryker\Zed\Kernel\AbstractBundleConfig;
+use SprykerMiddleware\Zed\Process\ProcessConfig as SprykerMiddlewareProcessConfig;
 
-class ProcessConfig extends AbstractBundleConfig
+class ProcessConfig extends SprykerMiddlewareProcessConfig
 {
     /**
      * @return string
