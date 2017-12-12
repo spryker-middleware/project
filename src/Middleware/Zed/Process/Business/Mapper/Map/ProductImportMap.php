@@ -43,6 +43,8 @@ class ProductImportMap implements MapInterface
                 ],
                 'except' => ['price', 'verschliessbarkeit', 'dach', 'material'],
             ],
+            'created' => 'created',
+            'associations' => 'associations',
         ];
     }
 }

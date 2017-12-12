@@ -11,6 +11,21 @@ class ProductImportDictionary implements DictionaryInterface
      */
     public function getDictionary(): array
     {
-        return [];
+        return [
+            'associations' => [
+                'StringToArray',
+                'options' => [
+                    'delimiter' => '|',
+                ],
+            ],
+            'values' => function ($value) {
+                $result = [];
+                foreach ($value as $key => $data) {
+                    $result[$key] = $data['value'];
+                }
+
+                return $result;
+            },
+        ];
     }
 }
