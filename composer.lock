@@ -777,7 +777,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker-middleware/process.git",
-                "reference": "d32ce34925eec08747de80c323d67e33c846e9ab"
+                "reference": "9d4899ecf7a7f1f593fad92a2013cb6dc9b6bcdf"
             },
             "require": {
                 "league/pipeline": "^0.3.0",
@@ -795,7 +795,7 @@
                 "MIT"
             ],
             "description": "Process module",
-            "time": "2017-12-11T22:03:53+00:00"
+            "time": "2017-12-12T10:11:46+00:00"
         },
         {
             "name": "spryker/config",
