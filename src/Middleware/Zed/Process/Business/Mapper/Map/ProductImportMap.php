@@ -23,7 +23,7 @@ class ProductImportMap implements MapInterface
                 foreach ($prices as $price) {
                     $localePrices = [];
                     foreach ($price['data'] as $localePrice) {
-                        $localePrices[$localePrice['currency']] = $localePrice['amount'];
+                        $localePrices[$localePrice['currency']] = (float)$localePrice['amount'];
                     }
                     $mappedPrices[$price['locale']] = $localePrices;
                 }

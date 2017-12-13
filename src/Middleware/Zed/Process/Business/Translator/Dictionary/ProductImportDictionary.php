@@ -18,6 +18,13 @@ class ProductImportDictionary implements DictionaryInterface
                     'delimiter' => '|',
                 ],
             ],
+            'categories' => [
+                'ArrayToString',
+                'options' => [
+                    'glue' => '|',
+                ],
+            ],
+            'created' =>  'StringToDateTime',
             'values' => function ($value) {
                 $result = [];
                 foreach ($value as $key => $data) {
