@@ -77,6 +77,26 @@ class ProcessCommunicationFactory extends SprykerMiddlewareProcessCommunicationF
     }
 
     /**
+     * @return array
+     */
+    protected function getRegisteredPreProcessorsList(): array
+    {
+        return [
+            ProcessDependencyProvider::PRODUCT_IMPORT_PROCESS => [],
+        ];
+    }
+
+    /**
+     * @return array
+     */
+    protected function getRegisteredPostProcessorsList(): array
+    {
+        return [
+            ProcessDependencyProvider::PRODUCT_IMPORT_PROCESS => [],
+        ];
+    }
+
+    /**
      * @param \Generated\Shared\Transfer\IteratorSettingsTransfer $iteratorSettingsTransfer
      *
      * @return \Iterator

@@ -12,28 +12,28 @@ class ProductImportDictionary implements DictionaryInterface
     public function getDictionary(): array
     {
         return [
-            'headerdate2' => ['StringToDateTime'],
-            'headerdate' => [
-                'DateTimeToString',
-                'options' => ['format' => 'Y-m-d\TH:i:s'],
-            ],
-            'customer.salutation' => [
-                'Enum',
+            'associations' => [
+                'StringToArray',
                 'options' => [
-                    'map' => [
-                        '10' => 'Mr',
-                        '20' => 'Mrs',
-                    ],
+                    'delimiter' => '|',
                 ],
             ],
-            'key3' => ['BoolToString'],   //bool(false) => 'false', bool(true) => 'true'
-            'key4' => ['FloatToInt'],
-            'key5' => ['FloatToString'],
-            'key6' => ['IntToFloat'],
-            'key7' => ['IntToString'],
-            'key8' => ['StringToInt'],
-            'key9' => ['StringToFloat'],
-            'key10' => ['StringToBool'],
+            'categories' => [
+                'ArrayToString',
+                'options' => [
+                    'glue' => '|',
+                ],
+            ],
+            'prices.*.*' => 'MoneyDecimalToInteger',
+            'created' => 'StringToDateTime',
+            'values' => function ($value, $key, $payload) {
+                $result = [];
+                foreach ($value as $key => $data) {
+                    $result[$key] = $data['value'];
+                }
+
+                return $result;
+            },
         ];
     }
 }
