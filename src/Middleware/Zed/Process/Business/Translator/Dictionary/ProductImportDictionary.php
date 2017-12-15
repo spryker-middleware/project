@@ -26,7 +26,7 @@ class ProductImportDictionary implements DictionaryInterface
             ],
             'prices.*.*' => 'MoneyDecimalToInteger',
             'created' => 'StringToDateTime',
-            'values' => function ($value) {
+            'values' => function ($value, $key) {
                 $result = [];
                 foreach ($value as $key => $data) {
                     $result[$key] = $data['value'];

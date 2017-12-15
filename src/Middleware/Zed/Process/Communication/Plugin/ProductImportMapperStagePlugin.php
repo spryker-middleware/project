@@ -2,6 +2,7 @@
 
 namespace Middleware\Zed\Process\Communication\Plugin;
 
+use SprykerMiddleware\Zed\Process\Business\Mapper\Map\MapInterface;
 use SprykerMiddleware\Zed\Process\Communication\Plugin\AbstractMapperStagePlugin;
 
 /**
@@ -10,12 +11,11 @@ use SprykerMiddleware\Zed\Process\Communication\Plugin\AbstractMapperStagePlugin
 class ProductImportMapperStagePlugin extends AbstractMapperStagePlugin
 {
     /**
-     * @return array
+     * @return \SprykerMiddleware\Zed\Process\Business\Mapper\Map\MapInterface
      */
-    public function getMap(): array
+    public function getMap(): MapInterface
     {
         return $this->getFactory()
-            ->createProductImportMap()
-            ->getMap();
+            ->createProductImportMap();
     }
 }
