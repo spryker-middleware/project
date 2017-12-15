@@ -2,21 +2,31 @@
 
 namespace Middleware\Zed\Process\Business\Mapper\Map;
 
+use DateTime;
 use SprykerMiddleware\Zed\Process\Business\Mapper\Map\MapInterface;
 
 class ProductImportMap implements MapInterface
 {
     /**
+     * @var string
+     */
+    protected $preGeneratedMapPath;
+
+    /**
+     * @param string $preGeneratedMapPath
+     */
+    public function __construct(string $preGeneratedMapPath = '')
+    {
+        $this->preGeneratedMapPath = $preGeneratedMapPath;
+    }
+    
+    /**
      * @return array
      */
     public function getMap(): array
     {
-        return [
-            'link' => '_links.self.href',
-            'sku' => 'identifier',
-            'categories' => 'categories',
-            'is_active' => 'enabled',
-            'parent' => 'parent',
+        $generated_map = ($this->preGeneratedMapPath != '') ? unserialize(file_get_contents($this->preGeneratedMapPath)) : [];
+        $custom_map = [
             'prices' => function (array $payload) {
                 $prices = $payload['values']['price'];
                 $mappedPrices = [];
@@ -43,6 +53,40 @@ class ProductImportMap implements MapInterface
                 ],
                 'except' => ['price', 'verschliessbarkeit', 'dach', 'material'],
             ],
+            'headerdate' => function ($payload) {
+                return new DateTime('2011-01-01T15:03:01.012345Z');
+            },
+            'headerdate2' => function ($payload) {
+                return '2011-01-01T15:03:01.012345Z';
+            },
+            'customer.salutation' => function ($payload) {
+                return '101';
+            },
+            'key3' => function ($payload) {
+                return true;
+            },
+            'key4' => function ($payload) {
+                return 1.0000124668092E+13;
+            },
+            'key5' => function ($payload) {
+                return 1.0000124668092E+13;
+            },
+            'key6' => function ($payload) {
+                return 123456;
+            },
+            'key7' => function ($payload) {
+                return 123456;
+            },
+            'key8' => function ($payload) {
+                return '123456';
+            },
+            'key9' => function ($payload) {
+                return '1.0000124668092';
+            },
+            'key10' => function ($payload) {
+                return 'Truesome';
+            },
         ];
+        return array_merge($generated_map, $custom_map);
     }
 }
