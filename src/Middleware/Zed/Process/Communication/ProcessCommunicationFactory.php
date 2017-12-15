@@ -54,4 +54,24 @@ class ProcessCommunicationFactory extends SprykerMiddlewareProcessCommunicationF
         $iteratorSettingsTransfer->setParseAsArray(true);
         return new JsonIterator($this->getConfig()->getProductImportPath(), $iteratorSettingsTransfer);
     }
+
+    /**
+     * @return array
+     */
+    protected function getRegisteredPreProcessorsList(): array
+    {
+        return [
+            ProcessDependencyProvider::PRODUCT_IMPORT_PROCESS => [],
+        ];
+    }
+
+    /**
+     * @return array
+     */
+    protected function getRegisteredPostProcessorsList(): array
+    {
+        return [
+            ProcessDependencyProvider::PRODUCT_IMPORT_PROCESS => [],
+        ];
+    }
 }
