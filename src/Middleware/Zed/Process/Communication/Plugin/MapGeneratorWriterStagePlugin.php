@@ -25,6 +25,6 @@ class MapGeneratorWriterStagePlugin extends AbstractWriterStagePlugin
     public function process($payload)
     {
         return $this->getFacade()
-            ->writeSerialized($payload, $this->getDestination());
+            ->write($payload, 'SerializedDump', $this->getDestination());
     }
 }
