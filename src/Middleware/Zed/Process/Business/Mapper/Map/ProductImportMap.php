@@ -8,16 +8,25 @@ use SprykerMiddleware\Zed\Process\Business\Mapper\Map\MapInterface;
 class ProductImportMap implements MapInterface
 {
     /**
+     * @var string
+     */
+    protected $preGeneratedMapPath;
+
+    /**
+     * @param string $preGeneratedMapPath
+     */
+    public function __construct(string $preGeneratedMapPath = '')
+    {
+        $this->preGeneratedMapPath = $preGeneratedMapPath;
+    }
+    
+    /**
      * @return array
      */
     public function getMap(): array
     {
-        return [
-            'link' => '_links.self.href',
-            'sku' => 'identifier',
-            'categories' => 'categories',
-            'is_active' => 'enabled',
-            'parent' => 'parent',
+        $generated_map = ($this->preGeneratedMapPath != '') ? unserialize(file_get_contents($this->preGeneratedMapPath)) : [];
+        $custom_map = [
             'prices' => function (array $payload, string $key) {
                 $prices = $payload['values']['price'];
                 $mappedPrices = [];
@@ -47,6 +56,7 @@ class ProductImportMap implements MapInterface
             'created' => 'created',
             'associations' => 'associations',
         ];
+        return array_merge($generated_map, $custom_map);
     }
 
     /**
