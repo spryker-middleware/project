@@ -7,4 +7,5 @@ use SprykerMiddleware\Shared\Process\ProcessConstants as SprykerProcessConstants
 interface ProcessConstants extends SprykerProcessConstants
 {
     const PRODUCT_IMPORT_FILE_PATH = 'PRODUCT_IMPORT_FILE_PATH';
+    const LOG_FILE_PATH_PRODUCT_IMPORT = 'LOG_FILE_PATH_PRODUCT_IMPORT';
 }

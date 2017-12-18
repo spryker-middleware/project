@@ -2,10 +2,13 @@
 namespace Middleware\Zed\Process\Communication;
 
 use Generated\Shared\Transfer\IteratorSettingsTransfer;
+use Generated\Shared\Transfer\LoggerSettingsTransfer;
 use Iterator;
+use Middleware\Zed\Process\Business\Log\Config\ProductImportLoggerConfig;
 use Middleware\Zed\Process\Business\Mapper\Map\ProductImportMap;
 use Middleware\Zed\Process\Business\Translator\Dictionary\ProductImportDictionary;
 use Middleware\Zed\Process\ProcessDependencyProvider;
+use Spryker\Shared\Log\Config\LoggerConfigInterface;
 use SprykerMiddleware\Zed\Process\Business\Iterator\JsonIterator;
 use SprykerMiddleware\Zed\Process\Business\Mapper\Map\MapInterface;
 use SprykerMiddleware\Zed\Process\Business\Translator\Dictionary\DictionaryInterface;
@@ -73,5 +76,27 @@ class ProcessCommunicationFactory extends SprykerMiddlewareProcessCommunicationF
         return [
             ProcessDependencyProvider::PRODUCT_IMPORT_PROCESS => [],
         ];
+    }
+
+    /**
+     * @return array
+     */
+    protected function getProcessLoggerConfigList(): array
+    {
+        return [
+            ProcessDependencyProvider::PRODUCT_IMPORT_PROCESS => function (LoggerSettingsTransfer $loggerSettingsTransfer) {
+                return $this->createProductImportLoggerConfig($loggerSettingsTransfer);
+            },
+        ];
+    }
+
+    /**
+     * @param \Generated\Shared\Transfer\LoggerSettingsTransfer $loggerSettingsTransfer
+     *
+     * @return \Spryker\Shared\Log\Config\LoggerConfigInterface
+     */
+    protected function createProductImportLoggerConfig(LoggerSettingsTransfer $loggerSettingsTransfer): LoggerConfigInterface
+    {
+        return new ProductImportLoggerConfig($loggerSettingsTransfer);
     }
 }

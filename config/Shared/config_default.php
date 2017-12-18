@@ -46,7 +46,7 @@ $config[ErrorHandlerConstants::ERROR_LEVEL] = E_ALL & ~E_DEPRECATED & ~E_USER_DE
 //$config[ErrorHandlerConstants::ERROR_LEVEL_LOG_ONLY] = E_DEPRECATED | E_USER_DEPRECATED;
 
 $config[LogConstants::LOG_LEVEL] = Logger::INFO;
-$config[LogConstants::LOG_FILE_PATH] = sprintf(
+$config[LogConstants::LOG_FILE_PATH_ZED] = sprintf(
     '%s/data/logs/%s/application.log',
     APPLICATION_ROOT_DIR,
     APPLICATION
