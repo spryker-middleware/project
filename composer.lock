@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "8d7253730a64757b71f6e7227275988a",
+    "content-hash": "1d6694a60f81be44c0760a98f6749b7a",
     "packages": [
         {
             "name": "container-interop/container-interop",
@@ -774,11 +774,10 @@
         {
             "name": "spryker-middleware/process",
             "version": "dev-feature/DEV-12-logging",
-            "dist": {
-                "type": "path",
-                "url": "/data/shop/development/packages/process",
-                "reference": "05b85a36e7464f161bdcfe0017420d73281c5d0b",
-                "shasum": null
+            "source": {
+                "type": "git",
+                "url": "git@github.com:spryker-middleware/process.git",
+                "reference": "4eae34a2388f163dbf63a57e6e8465fc20ca8351"
             },
             "require": {
                 "league/pipeline": "^0.3.0",
@@ -796,9 +795,7 @@
                 "MIT"
             ],
             "description": "Process module",
-            "transport-options": {
-                "symlink": true
-            }
+            "time": "2017-12-18T14:59:52+00:00"
         },
         {
             "name": "spryker/config",

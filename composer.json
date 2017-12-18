@@ -36,11 +36,8 @@
             "url": "git@github.com:spryker/architecture-sniffer.git"
         },
         {
-            "type": "path",
-            "url": "/data/shop/development/packages/process",
-            "options": {
-                "symlink": true
-            }
+            "type": "git",
+            "url": "git@github.com:spryker-middleware/process.git"
         }
     ]
 }
