@@ -5,7 +5,9 @@ use Generated\Shared\Transfer\IteratorSettingsTransfer;
 use Generated\Shared\Transfer\LoggerSettingsTransfer;
 use Iterator;
 use Middleware\Zed\Process\Business\Log\Config\ProductImportLoggerConfig;
+use Middleware\Zed\Process\Business\Mapper\Map\MapGeneratorMap;
 use Middleware\Zed\Process\Business\Mapper\Map\ProductImportMap;
+use Middleware\Zed\Process\Business\Translator\Dictionary\MapGeneratorDictionary;
 use Middleware\Zed\Process\Business\Translator\Dictionary\ProductImportDictionary;
 use Middleware\Zed\Process\ProcessDependencyProvider;
 use Spryker\Shared\Log\Config\LoggerConfigInterface;
@@ -22,9 +24,25 @@ class ProcessCommunicationFactory extends SprykerMiddlewareProcessCommunicationF
     /**
      * @return \SprykerMiddleware\Zed\Process\Business\Mapper\Map\MapInterface
      */
+    public function createMapGeneratorMap(): MapInterface
+    {
+        return new MapGeneratorMap();
+    }
+
+    /**
+     * @return \SprykerMiddleware\Zed\Process\Business\Translator\Dictionary\DictionaryInterface
+     */
+    public function createMapGeneratorDictionary(): DictionaryInterface
+    {
+        return new MapGeneratorDictionary();
+    }
+
+    /**
+     * @return \SprykerMiddleware\Zed\Process\Business\Mapper\Map\MapInterface
+     */
     public function createProductImportMap(): MapInterface
     {
-        return new ProductImportMap();
+        return new ProductImportMap($this->getConfig()->getMapGeneratorOutputPath());
     }
 
     /**
@@ -41,6 +59,9 @@ class ProcessCommunicationFactory extends SprykerMiddlewareProcessCommunicationF
     protected function getProcessIteratorsList(): array
     {
         return [
+            ProcessDependencyProvider::MAP_GENERATOR_PROCESS => function (IteratorSettingsTransfer $iteratorSettingsTransfer) {
+                return $this->createMapGeneratorIterator($iteratorSettingsTransfer);
+            },
             ProcessDependencyProvider::PRODUCT_IMPORT_PROCESS => function (IteratorSettingsTransfer $iteratorSettingsTransfer) {
                 return $this->createProductImportIterator($iteratorSettingsTransfer);
             },
@@ -76,6 +97,17 @@ class ProcessCommunicationFactory extends SprykerMiddlewareProcessCommunicationF
         return [
             ProcessDependencyProvider::PRODUCT_IMPORT_PROCESS => [],
         ];
+    }
+
+    /**
+     * @param \Generated\Shared\Transfer\IteratorSettingsTransfer $iteratorSettingsTransfer
+     *
+     * @return \Iterator
+     */
+    protected function createMapGeneratorIterator(IteratorSettingsTransfer $iteratorSettingsTransfer): Iterator
+    {
+        $iteratorSettingsTransfer->setParseAsArray(true);
+        return new JsonIterator($this->getConfig()->getMapSourcePath(), $iteratorSettingsTransfer);
     }
 
     /**

@@ -14,4 +14,28 @@ class ProcessConfig extends SprykerMiddlewareProcessConfig
     {
         return $this->get(ProcessConstants::PRODUCT_IMPORT_FILE_PATH);
     }
+
+    /**
+     * @return string
+     */
+    public function getProductImportOutputPath()
+    {
+        return $this->get(ProcessConstants::PRODUCT_IMPORT_OUTPUT_PATH);
+    }
+
+    /**
+     * @return string
+     */
+    public function getMapSourcePath()
+    {
+        return $this->get(ProcessConstants::MAP_SOURCE_FILE_PATH);
+    }
+
+    /**
+     * @return string
+     */
+    public function getMapGeneratorOutputPath()
+    {
+        return $this->get(ProcessConstants::GENERATED_MAP_FILE_PATH);
+    }
 }
