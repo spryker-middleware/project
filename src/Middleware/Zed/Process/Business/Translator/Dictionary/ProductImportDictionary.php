@@ -13,18 +13,25 @@ class ProductImportDictionary implements DictionaryInterface
     {
         return [
             'associations' => [
-                'StringToArray',
-                'options' => [
-                    'delimiter' => '|',
+                [
+                    'StringToArray',
+                    'options' => [
+                        'delimiter' => '|',
+                    ],
                 ],
             ],
             'categories' => [
-                'ArrayToString',
-                'options' => [
-                    'glue' => '|',
+                [
+                    'ArrayToString',
+                    'options' => [
+                        'glue' => '|',
+                    ],
                 ],
             ],
-            'prices.*.*' => 'MoneyDecimalToInteger',
+            'prices.*.*' => [
+                'StringToFloat',
+                'MoneyDecimalToInteger',
+            ],
             'created' => 'StringToDateTime',
             'values' => function ($value, $key, $payload) {
                 $result = [];
