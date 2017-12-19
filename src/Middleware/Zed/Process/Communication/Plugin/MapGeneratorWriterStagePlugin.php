@@ -2,6 +2,7 @@
 
 namespace Middleware\Zed\Process\Communication\Plugin;
 
+use Psr\Log\LoggerInterface;
 use SprykerMiddleware\Zed\Process\Communication\Plugin\AbstractWriterStagePlugin;
 
 /**
@@ -18,11 +19,9 @@ class MapGeneratorWriterStagePlugin extends AbstractWriterStagePlugin
     }
 
     /**
-     * @param mixed $payload
-     *
-     * @return array
+     * @inheritdoc
      */
-    public function process($payload)
+    public function process($payload, LoggerInterface $logger)
     {
         return $this->getFacade()
             ->write($payload, 'SerializedDump', $this->getDestination());
