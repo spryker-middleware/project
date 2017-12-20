@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "04b8bd20ee3f5a904aa1502855c4d6c7",
+    "content-hash": "9095f6fbbe662df56fc31acf7593932a",
     "packages": [
         {
             "name": "container-interop/container-interop",
@@ -773,15 +773,16 @@
         },
         {
             "name": "spryker-middleware/process",
-            "version": "dev-dev",
-            "source": {
-                "type": "git",
-                "url": "git@github.com:spryker-middleware/process.git",
-                "reference": "980f9fe0c0165cc02ebb77df9fa1751973deaf92"
+            "version": "dev-feature/architecture-improvments",
+            "dist": {
+                "type": "path",
+                "url": "/data/shop/development/packages/process",
+                "reference": "726775c1e10966c1831ccc11a882d345fba46dd8",
+                "shasum": null
             },
             "require": {
                 "league/pipeline": "^0.3.0",
-                "spryker/console": "^3.0.0",
+                "spryker/console": "^4.0.0",
                 "spryker/development": "^3.0.0",
                 "spryker/transfer": "^3.4.0"
             },
@@ -795,7 +796,9 @@
                 "MIT"
             ],
             "description": "Process module",
-            "time": "2017-12-18T13:50:40+00:00"
+            "transport-options": {
+                "symlink": true
+            }
         },
         {
             "name": "spryker/config",
@@ -866,11 +869,11 @@
         },
         {
             "name": "spryker/console",
-            "version": "3.2.1",
+            "version": "4.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/Console.git",
-                "reference": "aef52495cf267f15dd09263750e97563cd441ccd",
+                "reference": "6236226914f051bb40946d5c3861c54d2aca7a2e",
                 "mirrors": [
                     {
                         "url": "https://code.spryker.com:/repo/private/mirrors/%package%/%normalizedUrl%.%type%",
@@ -880,8 +883,8 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/Console/zipball/aef52495cf267f15dd09263750e97563cd441ccd",
-                "reference": "aef52495cf267f15dd09263750e97563cd441ccd",
+                "url": "https://api.github.com/repos/spryker/Console/zipball/6236226914f051bb40946d5c3861c54d2aca7a2e",
+                "reference": "6236226914f051bb40946d5c3861c54d2aca7a2e",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -894,7 +897,6 @@
                 "spryker/config": "^3.0.0",
                 "spryker/error-handler": "^2.0.0",
                 "spryker/kernel": "^3.0.0",
-                "spryker/propel": "^3.0.0",
                 "symfony/console": "^2.6.13 || ^3.0.0"
             },
             "require-dev": {
@@ -934,7 +936,7 @@
             "support": {
                 "source": "https://github.com/spryker/Console/tree/master"
             },
-            "time": "2017-11-27T14:09:44+00:00"
+            "time": "2017-11-29T17:42:02+00:00"
         },
         {
             "name": "spryker/development",
@@ -1477,77 +1479,6 @@
                 "source": "https://github.com/spryker/NewRelicApi/tree/1.0.0"
             },
             "time": "2017-02-22T11:52:23+00:00"
-        },
-        {
-            "name": "spryker/propel",
-            "version": "3.4.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/spryker/Propel.git",
-                "reference": "eaea787dce575c457aa8a66e320819b8891121bd",
-                "mirrors": [
-                    {
-                        "url": "https://code.spryker.com:/repo/private/mirrors/%package%/%normalizedUrl%.%type%",
-                        "preferred": true
-                    }
-                ]
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/spryker/Propel/zipball/eaea787dce575c457aa8a66e320819b8891121bd",
-                "reference": "eaea787dce575c457aa8a66e320819b8891121bd",
-                "shasum": "",
-                "mirrors": [
-                    {
-                        "url": "https://code.spryker.com/repo/private/dists/%package%/%version%/%reference%.%type%",
-                        "preferred": true
-                    }
-                ]
-            },
-            "require": {
-                "php": ">=7.1",
-                "spryker/config": "^3.0.0",
-                "spryker/kernel": "^3.0.0",
-                "spryker/monolog": "^2.0.0",
-                "spryker/propel-orm": "^1.4.0",
-                "spryker/symfony": "^3.0.0",
-                "spryker/util-encoding": "^2.0.0",
-                "spryker/util-text": "^1.1.0"
-            },
-            "require-dev": {
-                "spryker/code-sniffer": "*",
-                "spryker/silex": "*",
-                "spryker/testify": "*"
-            },
-            "suggest": {
-                "spryker/silex": "If you want to use ServiceProvider."
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "3.0.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Spryker\\": "src/Spryker/",
-                    "SprykerTest\\Shared\\Propel\\Helper\\": "tests/SprykerTest/Shared/Propel/_support/Helper/"
-                }
-            },
-            "autoload-dev": {
-                "psr-4": {
-                    "SprykerTest\\": "tests/SprykerTest/"
-                }
-            },
-            "notification-url": "https://code.spryker.com/repo/private/downloads/",
-            "license": [
-                "proprietary"
-            ],
-            "description": "Propel module",
-            "support": {
-                "source": "https://github.com/spryker/Propel/tree/3.4.0"
-            },
-            "time": "2017-12-14T07:36:03+00:00"
         },
         {
             "name": "spryker/propel-orm",
