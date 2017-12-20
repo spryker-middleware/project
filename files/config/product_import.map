@@ -1,1 +1,1 @@
-a:5:{s:4:"link";s:16:"_links.self.href";s:3:"sku";s:10:"identifier";s:10:"categories";s:10:"categories";s:9:"is_active";s:7:"enabled";s:6:"parent";s:6:"parent";}
+[{"link":"_links.self.href","sku":"identifier","categories":"categories","is_active":"enabled","parent":"parent"}]

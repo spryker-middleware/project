@@ -13,11 +13,13 @@ class MapGeneratorDictionary implements DictionaryInterface
     {
         return [
             'parent' => [
-                'Enum',
-                'options' => [
-                    'map' => [
-                        '' => 'parent',
-                        '1' => 'ancestor',
+                [
+                    'Enum',
+                    'options' => [
+                        'map' => [
+                            '' => 'parent',
+                            '1' => 'ancestor',
+                        ],
                     ],
                 ],
             ],
