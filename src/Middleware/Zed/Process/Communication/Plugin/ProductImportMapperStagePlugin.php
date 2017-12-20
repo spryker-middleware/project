@@ -2,20 +2,20 @@
 
 namespace Middleware\Zed\Process\Communication\Plugin;
 
-use SprykerMiddleware\Zed\Process\Business\Mapper\Map\MapInterface;
+use Generated\Shared\Transfer\MapperConfigTransfer;
 use SprykerMiddleware\Zed\Process\Communication\Plugin\AbstractMapperStagePlugin;
 
 /**
- * @method \Middleware\Zed\Process\Communication\ProcessCommunicationFactory getFactory()
+ * @method \Middleware\Zed\Process\Business\ProcessFacadeInterface getFacade()
  */
 class ProductImportMapperStagePlugin extends AbstractMapperStagePlugin
 {
     /**
-     * @return \SprykerMiddleware\Zed\Process\Business\Mapper\Map\MapInterface
+     * @return \Generated\Shared\Transfer\MapperConfigTransfer
      */
-    public function getMap(): MapInterface
+    public function getMapperConfig(): MapperConfigTransfer
     {
-        return $this->getFactory()
-            ->createProductImportMap();
+        return $this->getFacade()
+            ->getProductImportMapperConfig();
     }
 }

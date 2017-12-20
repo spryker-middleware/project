@@ -17,7 +17,7 @@ class ProcessDependencyProvider extends SprykerMiddlewareProcessDependencyProvid
     /**
      * @return array
      */
-    public function registerProcessStages()
+    public function registerProcessStages(): array
     {
         $stages = [
             static::MAP_GENERATOR_PROCESS => [
@@ -33,5 +33,27 @@ class ProcessDependencyProvider extends SprykerMiddlewareProcessDependencyProvid
         ];
 
         return $stages;
+    }
+
+    /**
+     * @return array
+     */
+    public function registerPreProcessorHooks(): array
+    {
+        return [
+            static::MAP_GENERATOR_PROCESS => [],
+            static::PRODUCT_IMPORT_PROCESS => [],
+        ];
+    }
+
+    /**
+     * @return array
+     */
+    public function registerPostProcessorHooks(): array
+    {
+        return [
+            static::MAP_GENERATOR_PROCESS => [],
+            static::PRODUCT_IMPORT_PROCESS => [],
+        ];
     }
 }
