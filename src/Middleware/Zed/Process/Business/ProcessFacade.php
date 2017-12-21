@@ -2,10 +2,8 @@
 
 namespace Middleware\Zed\Process\Business;
 
-use Generated\Shared\Transfer\IteratorSettingsTransfer;
 use Generated\Shared\Transfer\MapperConfigTransfer;
 use Generated\Shared\Transfer\TranslatorConfigTransfer;
-use Iterator;
 use SprykerMiddleware\Zed\Process\Business\ProcessFacade as SprykerMiddlewareProcessFacade;
 
 /**
@@ -51,27 +49,5 @@ class ProcessFacade extends SprykerMiddlewareProcessFacade implements ProcessFac
         return $this->getFactory()
             ->createMapGeneratorDictionary()
             ->getTranslatorConfig();
-    }
-
-    /**
-     * @param \Generated\Shared\Transfer\IteratorSettingsTransfer $iteratorSettingsTransfer
-     *
-     * @return \Iterator
-     */
-    public function getProductImportIterator(IteratorSettingsTransfer $iteratorSettingsTransfer): Iterator
-    {
-        return $this->getFactory()
-            ->createProductImportIterator($iteratorSettingsTransfer);
-    }
-
-    /**
-     * @param \Generated\Shared\Transfer\IteratorSettingsTransfer $iteratorSettingsTransfer
-     *
-     * @return \Iterator
-     */
-    public function getMapGeneratorIterator(IteratorSettingsTransfer $iteratorSettingsTransfer): Iterator
-    {
-        return $this->getFactory()
-            ->createMapGeneratorIterator($iteratorSettingsTransfer);
     }
 }
