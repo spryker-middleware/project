@@ -13,7 +13,8 @@
         "phpmd/phpmd": "~2.4.3",
         "phpunit/phpunit": "^5.0",
         "spryker/architecture-sniffer": "dev-master",
-        "spryker/code-sniffer": "*"
+        "spryker/code-sniffer": "*",
+        "spryker/code-generator": "*"
     },
     "autoload": {
         "psr-4": {

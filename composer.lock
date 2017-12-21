@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "04b8bd20ee3f5a904aa1502855c4d6c7",
+    "content-hash": "e276736683a20731d85801ae1bef82ee",
     "packages": [
         {
             "name": "container-interop/container-interop",
@@ -5899,6 +5899,76 @@
                 "issues": "https://github.com/spryker/architecture-sniffer/issues"
             },
             "time": "2017-12-07T14:54:26+00:00"
+        },
+        {
+            "name": "spryker/code-generator",
+            "version": "0.3.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/code-generator.git",
+                "reference": "53a061b20ea355ea49b77cb44fd66ab0531d8af9",
+                "mirrors": [
+                    {
+                        "url": "https://code.spryker.com:/repo/private/mirrors/%package%/%normalizedUrl%.%type%",
+                        "preferred": true
+                    }
+                ]
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/code-generator/zipball/53a061b20ea355ea49b77cb44fd66ab0531d8af9",
+                "reference": "53a061b20ea355ea49b77cb44fd66ab0531d8af9",
+                "shasum": "",
+                "mirrors": [
+                    {
+                        "url": "https://code.spryker.com/repo/private/dists/%package%/%version%/%reference%.%type%",
+                        "preferred": true
+                    }
+                ]
+            },
+            "require": {
+                "php": ">=5.6.0",
+                "spryker/kernel": "^3.0.0",
+                "zendframework/zend-filter": "*"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "autoload-dev": {
+                "psr-4": {
+                    "SprykerTest\\": "tests/SprykerTest/"
+                }
+            },
+            "notification-url": "https://code.spryker.com/repo/private/downloads/",
+            "scripts": {
+                "cs-check": [
+                    "phpcs --standard=vendor/spryker/code-sniffer/Spryker/ruleset.xml -v --ignore=/code-generator/vendor/,/templates/ ./"
+                ],
+                "cs-fix": [
+                    "phpcbf --standard=vendor/spryker/code-sniffer/Spryker/ruleset.xml -v --ignore=/code-generator/vendor/,/templates/ ./"
+                ]
+            },
+            "license": [
+                "MIT"
+            ],
+            "description": "CodeGenerator module",
+            "support": {
+                "source": "https://github.com/spryker/code-generator/tree/master",
+                "issues": "https://github.com/spryker/code-generator/issues"
+            },
+            "time": "2017-12-01T13:53:50+00:00"
         },
         {
             "name": "spryker/code-sniffer",
