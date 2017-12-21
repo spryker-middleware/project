@@ -2,7 +2,7 @@
 
 namespace Middleware\Zed\Process\Communication\Plugin\Hook;
 
-use SprykerMiddleware\Zed\Process\Communication\Plugin\Hook\PreProcessorHookPluginInterface;
+use SprykerMiddleware\Zed\Process\Dependency\Plugin\Hook\PreProcessorHookPluginInterface;
 
 class DummyPreProcessorHookPlugin implements PreProcessorHookPluginInterface
 {
@@ -11,7 +11,5 @@ class DummyPreProcessorHookPlugin implements PreProcessorHookPluginInterface
      */
     public function process(): void
     {
-        echo ';)';
-        die;
     }
 }

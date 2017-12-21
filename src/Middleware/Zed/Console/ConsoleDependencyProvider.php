@@ -44,17 +44,17 @@ class ConsoleDependencyProvider extends SprykerDependencyProvider
             $commands[] = new CodePhpMessDetectorConsole();
             $commands[] = new CodeArchitectureSnifferConsole();
             $commands[] = new ValidatorConsole();
-            $commands[] =new BundleCodeGeneratorConsole();
-            $commands[] =new BundleYvesCodeGeneratorConsole();
-            $commands[] =new BundleZedCodeGeneratorConsole();
-            $commands[] =new BundleServiceCodeGeneratorConsole();
-            $commands[] =new BundleSharedCodeGeneratorConsole();
-            $commands[] =new BundleClientCodeGeneratorConsole();
-            $commands[] =new GenerateZedIdeAutoCompletionConsole();
-            $commands[] =new GenerateClientIdeAutoCompletionConsole();
-            $commands[] =new GenerateServiceIdeAutoCompletionConsole();
-            $commands[] =new GenerateYvesIdeAutoCompletionConsole();
-            $commands[] =new GenerateIdeAutoCompletionConsole();
+            $commands[] = new BundleCodeGeneratorConsole();
+            $commands[] = new BundleYvesCodeGeneratorConsole();
+            $commands[] = new BundleZedCodeGeneratorConsole();
+            $commands[] = new BundleServiceCodeGeneratorConsole();
+            $commands[] = new BundleSharedCodeGeneratorConsole();
+            $commands[] = new BundleClientCodeGeneratorConsole();
+            $commands[] = new GenerateZedIdeAutoCompletionConsole();
+            $commands[] = new GenerateClientIdeAutoCompletionConsole();
+            $commands[] = new GenerateServiceIdeAutoCompletionConsole();
+            $commands[] = new GenerateYvesIdeAutoCompletionConsole();
+            $commands[] = new GenerateIdeAutoCompletionConsole();
         }
         return $commands;
     }
