@@ -37,7 +37,7 @@ class ProductImportMap implements MapInterface
      */
     protected function getMap(): array
     {
-        $generated_map = ($this->preGeneratedMapPath != '') ? unserialize(file_get_contents($this->preGeneratedMapPath)) : [];
+        $generated_map = ($this->preGeneratedMapPath != '') ? json_decode(file_get_contents($this->preGeneratedMapPath), true) : [];
         $custom_map = [
             'prices' => function (array $payload, string $key) {
                 $prices = $payload['values']['price'];
@@ -68,7 +68,7 @@ class ProductImportMap implements MapInterface
             'created' => 'created',
             'associations' => 'associations',
         ];
-        return array_merge($generated_map, $custom_map);
+        return array_merge(reset($generated_map), $custom_map);
     }
 
     /**

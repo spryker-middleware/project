@@ -3,10 +3,8 @@ namespace Middleware\Zed\Process;
 
 use Middleware\Zed\Process\Communication\Plugin\MapGeneratorMapperStagePlugin;
 use Middleware\Zed\Process\Communication\Plugin\MapGeneratorTranslatorStagePlugin;
-use Middleware\Zed\Process\Communication\Plugin\MapGeneratorWriterStagePlugin;
 use Middleware\Zed\Process\Communication\Plugin\ProductImportMapperStagePlugin;
 use Middleware\Zed\Process\Communication\Plugin\ProductImportTranslatorStagePlugin;
-use Middleware\Zed\Process\Communication\Plugin\ProductImportWriterStagePlugin;
 use SprykerMiddleware\Zed\Process\ProcessDependencyProvider as SprykerMiddlewareProcessDependencyProvider;
 
 class ProcessDependencyProvider extends SprykerMiddlewareProcessDependencyProvider
@@ -23,12 +21,10 @@ class ProcessDependencyProvider extends SprykerMiddlewareProcessDependencyProvid
             static::MAP_GENERATOR_PROCESS => [
                 new MapGeneratorMapperStagePlugin(),
                 new MapGeneratorTranslatorStagePlugin(),
-                new MapGeneratorWriterStagePlugin(),
             ],
             static::PRODUCT_IMPORT_PROCESS => [
                 new ProductImportMapperStagePlugin(),
                 new ProductImportTranslatorStagePlugin(),
-                new ProductImportWriterStagePlugin(),
             ],
         ];
 
