@@ -2,20 +2,20 @@
 
 namespace Middleware\Zed\Process\Communication\Plugin;
 
+use Generated\Shared\Transfer\TranslatorConfigTransfer;
 use SprykerMiddleware\Zed\Process\Communication\Plugin\AbstractTranslatorStagePlugin;
 
 /**
- * @method \Middleware\Zed\Process\Communication\ProcessCommunicationFactory getFactory()
+ * @method \Middleware\Zed\Process\Business\ProcessFacadeInterface getFacade()
  */
 class MapGeneratorTranslatorStagePlugin extends AbstractTranslatorStagePlugin
 {
     /**
-     * @return array
+     * @return \Generated\Shared\Transfer\TranslatorConfigTransfer
      */
-    public function getDictionary(): array
+    public function getTranslatorConfig(): TranslatorConfigTransfer
     {
-        return $this->getFactory()
-            ->createMapGeneratorDictionary()
-            ->getDictionary();
+        return $this->getFacade()
+            ->getMapGeneratorTranslatorConfig();
     }
 }
