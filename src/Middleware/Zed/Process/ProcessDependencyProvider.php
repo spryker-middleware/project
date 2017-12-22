@@ -19,7 +19,7 @@ class ProcessDependencyProvider extends SprykerMiddlewareProcessDependencyProvid
     /**
      * @return array
      */
-    public function registerProcesses(): array
+    public function getProcesses(): array
     {
         return [
             static::MAP_GENERATOR_PROCESS => [
@@ -32,9 +32,9 @@ class ProcessDependencyProvider extends SprykerMiddlewareProcessDependencyProvid
     }
 
     /**
-     * @return array
+     * @return \SprykerMiddleware\Zed\Process\Dependency\Plugin\StagePluginInterface[][]
      */
-    public function registerPipelines(): array
+    public function getPipelines(): array
     {
         return [
             static::MAP_GENERATOR_PIPELINE => [
@@ -49,9 +49,9 @@ class ProcessDependencyProvider extends SprykerMiddlewareProcessDependencyProvid
     }
 
     /**
-     * @return array
+     * @return \SprykerMiddleware\Zed\Process\Dependency\Plugin\Hook\PreProcessorHookPluginInterface[][]
      */
-    public function registerPreProcessorHooks(): array
+    public function getPreProcessorHooks(): array
     {
         return [
             static::MAP_GENERATOR_PROCESS => [],
@@ -60,9 +60,9 @@ class ProcessDependencyProvider extends SprykerMiddlewareProcessDependencyProvid
     }
 
     /**
-     * @return array
+     * @return \SprykerMiddleware\Zed\Process\Dependency\Plugin\Hook\PostProcessorHookPluginInterface[][]
      */
-    public function registerPostProcessorHooks(): array
+    public function getPostProcessorHooks(): array
     {
         return [
             static::MAP_GENERATOR_PROCESS => [],
