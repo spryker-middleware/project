@@ -3,7 +3,7 @@
 namespace Middleware\Zed\Process\Business\Mapper\Map;
 
 use Generated\Shared\Transfer\MapperConfigTransfer;
-use Middleware\Shared\Process\ProcessConstants;
+use SprykerMiddleware\Shared\Process\Config\ProcessConfig;
 use SprykerMiddleware\Zed\Process\Business\Mapper\Map\MapInterface;
 
 class MapGeneratorMap implements MapInterface
@@ -46,6 +46,6 @@ class MapGeneratorMap implements MapInterface
      */
     protected function getStrategy(): string
     {
-        return ProcessConstants::MAPPER_STRATEGY_SKIP_UNKNOWN;
+        return ProcessConfig::MAPPER_STRATEGY_SKIP_UNKNOWN;
     }
 }
