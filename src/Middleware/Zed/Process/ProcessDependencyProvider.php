@@ -7,6 +7,7 @@ use Middleware\Zed\Process\Communication\Plugin\ProductImportMapperStagePlugin;
 use Middleware\Zed\Process\Communication\Plugin\ProductImportTranslatorStagePlugin;
 use SprykerMiddleware\Zed\Process\Business\Iterator\NullIterator;
 use SprykerMiddleware\Zed\Process\Communication\Plugin\JsonReaderStagePlugin;
+use SprykerMiddleware\Zed\Process\Communication\Plugin\JsonWriterStagePlugin;
 use SprykerMiddleware\Zed\Process\ProcessDependencyProvider as SprykerMiddlewareProcessDependencyProvider;
 
 class ProcessDependencyProvider extends SprykerMiddlewareProcessDependencyProvider
@@ -29,7 +30,7 @@ class ProcessDependencyProvider extends SprykerMiddlewareProcessDependencyProvid
             ],
             static::PRODUCT_IMPORT_PROCESS => [
                 static::PIPELINE => static::PRODUCT_IMPORT_PIPELINE,
-                static::ITERATOR => NullIterator::class
+                static::ITERATOR => NullIterator::class,
             ],
         ];
     }
@@ -48,6 +49,7 @@ class ProcessDependencyProvider extends SprykerMiddlewareProcessDependencyProvid
                 new JsonReaderStagePlugin(),
                 new ProductImportMapperStagePlugin(),
                 new ProductImportTranslatorStagePlugin(),
+                new JsonWriterStagePlugin(),
             ],
         ];
     }
