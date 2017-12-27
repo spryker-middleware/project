@@ -2,23 +2,11 @@
 
 namespace Middleware\Zed\Process\Business\Mapper\Map;
 
-use Generated\Shared\Transfer\MapperConfigTransfer;
-use SprykerMiddleware\Shared\Process\Config\ProcessConfig;
-use SprykerMiddleware\Zed\Process\Business\Mapper\Map\MapInterface;
+use SprykerMiddleware\Shared\Process\ProcessConfig;
+use SprykerMiddleware\Zed\Process\Business\Mapper\Map\AbstractMap;
 
-class MapGeneratorMap implements MapInterface
+class MapGeneratorMap extends AbstractMap
 {
-    /**
-     * @return \Generated\Shared\Transfer\MapperConfigTransfer
-     */
-    public function getMapperConfig(): MapperConfigTransfer
-    {
-        $mapperConfigTransfer = new MapperConfigTransfer();
-        $mapperConfigTransfer->setMap($this->getMap());
-        $mapperConfigTransfer->setStrategy($this->getStrategy());
-        return $mapperConfigTransfer;
-    }
-
     /**
      * @return array
      */
