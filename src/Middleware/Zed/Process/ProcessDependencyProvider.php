@@ -1,6 +1,8 @@
 <?php
 namespace Middleware\Zed\Process;
 
+use Middleware\Zed\Process\Communication\Plugin\Hook\DummyPostProcessorHookPlugin;
+use Middleware\Zed\Process\Communication\Plugin\Hook\DummyPreProcessorHookPlugin;
 use Middleware\Zed\Process\Communication\Plugin\MapGeneratorMapperStagePlugin;
 use Middleware\Zed\Process\Communication\Plugin\MapGeneratorTranslatorStagePlugin;
 use Middleware\Zed\Process\Communication\Plugin\ProductImportMapperStagePlugin;
@@ -25,31 +27,8 @@ class ProcessDependencyProvider extends SprykerMiddlewareProcessDependencyProvid
     public function getProcesses(): array
     {
         return [
-            static::MAP_GENERATOR_PROCESS => [
-                static::PIPELINE => static::MAP_GENERATOR_PIPELINE,
-            ],
             static::PRODUCT_IMPORT_PROCESS => [
-                static::PIPELINE => static::PRODUCT_IMPORT_PIPELINE,
                 static::ITERATOR => NullIterator::class,
-            ],
-        ];
-    }
-
-    /**
-     * @return \SprykerMiddleware\Zed\Process\Dependency\Plugin\StagePluginInterface[][]
-     */
-    public function getPipelines(): array
-    {
-        return [
-            static::MAP_GENERATOR_PIPELINE => [
-                new MapGeneratorMapperStagePlugin(),
-                new MapGeneratorTranslatorStagePlugin(),
-            ],
-            static::PRODUCT_IMPORT_PIPELINE => [
-                new JsonReaderStagePlugin(),
-                new ProductImportMapperStagePlugin(),
-                new ProductImportTranslatorStagePlugin(),
-                new JsonWriterStagePlugin(),
             ],
         ];
     }
@@ -57,22 +36,35 @@ class ProcessDependencyProvider extends SprykerMiddlewareProcessDependencyProvid
     /**
      * @return \SprykerMiddleware\Zed\Process\Dependency\Plugin\Hook\PreProcessorHookPluginInterface[][]
      */
-    public function getPreProcessorHooks(): array
+    public function getPreProcessorHooksStack(): array
     {
         return [
-            static::MAP_GENERATOR_PROCESS => [],
-            static::PRODUCT_IMPORT_PROCESS => [],
+            new DummyPreProcessorHookPlugin(),
         ];
     }
 
     /**
      * @return \SprykerMiddleware\Zed\Process\Dependency\Plugin\Hook\PostProcessorHookPluginInterface[][]
      */
-    public function getPostProcessorHooks(): array
+    public function getPostProcessorHooksStack(): array
     {
         return [
-            static::MAP_GENERATOR_PROCESS => [],
-            static::PRODUCT_IMPORT_PROCESS => [],
+            new DummyPostProcessorHookPlugin(),
+        ];
+    }
+
+    /**
+     * @return \SprykerMiddleware\Zed\Process\Dependency\Plugin\StagePluginInterface[]
+     */
+    public function getStagePluginsStack()
+    {
+        return [
+            new JsonReaderStagePlugin(),
+            new ProductImportMapperStagePlugin(),
+            new ProductImportTranslatorStagePlugin(),
+            new JsonWriterStagePlugin(),
+            new MapGeneratorMapperStagePlugin(),
+            new MapGeneratorTranslatorStagePlugin(),
         ];
     }
 }
