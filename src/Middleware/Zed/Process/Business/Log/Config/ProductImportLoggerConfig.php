@@ -10,7 +10,7 @@ use SprykerMiddleware\Zed\Process\Business\Log\Config\MiddlewareLoggerConfig;
 
 class ProductImportLoggerConfig extends MiddlewareLoggerConfig
 {
-    const NAME = 'ProductImport';
+    const CHANNEL_NAME = 'ProductImport';
 
     /**
      * @return \Monolog\Handler\HandlerInterface[]
