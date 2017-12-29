@@ -47,6 +47,9 @@ class ProcessConfig extends SprykerMiddlewareProcessConfig
         return $this->get(ProcessConstants::PRODUCT_IMPORT_ADDITIONAL_MAP_FILE_PATH);
     }
 
+    /**
+     * @return mixed
+     */
     public function getDefaultThreshold()
     {
         return $this->get(ProcessConstants::DEFAULT_THRESHOLD, 1000);
