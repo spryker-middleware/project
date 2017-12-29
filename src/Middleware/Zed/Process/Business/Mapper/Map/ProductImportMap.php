@@ -40,6 +40,14 @@ class ProductImportMap extends AbstractMap
 
                 return $mappedPrices;
             },
+            'localizedAttributes' => [
+                'values.localizedAttributes',
+                'itemMap' => [
+                        'keep' => 'keep',
+                ],
+                'itemExcept' => ['leaveOut', 'data'],
+                'except' => [],
+            ],
             'values' => [
                 'values',
                 'itemMap' => [
@@ -51,7 +59,7 @@ class ProductImportMap extends AbstractMap
                         return $mappedItem;
                     },
                 ],
-                'except' => ['price', 'verschliessbarkeit', 'dach', 'material'],
+                'except' => ['price', 'verschliessbarkeit', 'dach', 'material', 'localizedAttributes'],
             ],
             'created' => 'created',
             'associations' => 'associations',
@@ -64,6 +72,6 @@ class ProductImportMap extends AbstractMap
      */
     protected function getStrategy(): string
     {
-        return ProcessConfig::MAPPER_STRATEGY_SKIP_UNKNOWN;
+        return ProcessConfig::MAPPER_STRATEGY_COPY_UNKNOWN;
     }
 }
