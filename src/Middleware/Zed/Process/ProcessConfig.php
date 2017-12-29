@@ -9,9 +9,9 @@ use Middleware\Zed\Process\Communication\Plugin\MapGeneratorMapperStagePlugin;
 use Middleware\Zed\Process\Communication\Plugin\MapGeneratorTranslatorStagePlugin;
 use Middleware\Zed\Process\Communication\Plugin\ProductImportMapperStagePlugin;
 use Middleware\Zed\Process\Communication\Plugin\ProductImportTranslatorStagePlugin;
+use SprykerMiddleware\Zed\Process\Communication\Plugin\Iterator\NullIteratorPlugin;
 use SprykerMiddleware\Zed\Process\Communication\Plugin\JsonReaderStagePlugin;
 use SprykerMiddleware\Zed\Process\Communication\Plugin\JsonWriterStagePlugin;
-;
 use SprykerMiddleware\Zed\Process\ProcessConfig as SprykerMiddlewareProcessConfig;
 
 class ProcessConfig extends SprykerMiddlewareProcessConfig
@@ -32,6 +32,16 @@ class ProcessConfig extends SprykerMiddlewareProcessConfig
                 ProductImportTranslatorStagePlugin::PLUGIN_NAME,
                 JsonWriterStagePlugin::PLUGIN_NAME,
             ],
+        ];
+    }
+
+    /**
+     * @return array
+     */
+    public function getProcessIteratorsConfig()
+    {
+        return [
+            ProcessConstants::PRODUCT_IMPORT_PROCESS => NullIteratorPlugin::PLUGIN_NAME,
         ];
     }
 

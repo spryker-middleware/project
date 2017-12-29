@@ -8,6 +8,7 @@ use Middleware\Zed\Process\Communication\Plugin\MapGeneratorTranslatorStagePlugi
 use Middleware\Zed\Process\Communication\Plugin\ProductImportMapperStagePlugin;
 use Middleware\Zed\Process\Communication\Plugin\ProductImportTranslatorStagePlugin;
 use SprykerMiddleware\Zed\Process\Business\Iterator\NullIterator;
+use SprykerMiddleware\Zed\Process\Communication\Plugin\Iterator\NullIteratorPlugin;
 use SprykerMiddleware\Zed\Process\Communication\Plugin\JsonReaderStagePlugin;
 use SprykerMiddleware\Zed\Process\Communication\Plugin\JsonWriterStagePlugin;
 use SprykerMiddleware\Zed\Process\ProcessDependencyProvider as SprykerMiddlewareProcessDependencyProvider;
@@ -65,6 +66,16 @@ class ProcessDependencyProvider extends SprykerMiddlewareProcessDependencyProvid
             new JsonWriterStagePlugin(),
             new MapGeneratorMapperStagePlugin(),
             new MapGeneratorTranslatorStagePlugin(),
+        ];
+    }
+    
+    /**
+     * @return \SprykerMiddleware\Zed\Process\Dependency\Plugin\Iterator\ProcessIteratorPluginInterface[]
+     */
+    public function getIteratorsStack()
+    {
+        return [
+            new NullIteratorPlugin(),
         ];
     }
 }
