@@ -4,12 +4,12 @@ namespace Middleware\Zed\Process\Business\Translator\Dictionary;
 
 use SprykerMiddleware\Zed\Process\Business\Translator\Dictionary\AbstractDictionary;
 
-class ProductImportDictionary implements AbstractDictionary
+class ProductImportDictionary extends AbstractDictionary
 {
     /**
      * @return array
      */
-    protected function getDictionary(): array
+    public function getDictionary(): array
     {
         return [
             'associations' => [

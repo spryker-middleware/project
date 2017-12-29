@@ -2,22 +2,25 @@
 
 namespace Middleware\Zed\Process\Business\Mapper\Map;
 
+use Middleware\Zed\Process\ProcessConfig as MiddlewareProcessConfig;
 use SprykerMiddleware\Shared\Process\ProcessConfig;
 use SprykerMiddleware\Zed\Process\Business\Mapper\Map\AbstractMap;
 
 class ProductImportMap extends AbstractMap
 {
     /**
-     * @var string
+     * @var \Middleware\Zed\Process\ProcessConfig string
      */
-    protected $preGeneratedMapPath;
+    protected $config;
 
     /**
-     * @param string $preGeneratedMapPath
+     * ProductImportMap constructor.
+     *
+     * @param \SprykerMiddleware\Shared\Process\ProcessConfig $config
      */
-    public function __construct(string $preGeneratedMapPath = '')
+    public function __construct(MiddlewareProcessConfig $config)
     {
-        $this->preGeneratedMapPath = $preGeneratedMapPath;
+        $this->config = $config;
     }
 
     /**
@@ -25,7 +28,8 @@ class ProductImportMap extends AbstractMap
      */
     protected function getMap(): array
     {
-        $generated_map = ($this->preGeneratedMapPath != '') ? json_decode(file_get_contents($this->preGeneratedMapPath), true) : [];
+        $generated_map = $this->readMapFromFile($this->config->getMapGeneratorOutputPath());
+        $additional_map = $this->readMapFromFile($this->config->getProductImportAdditionalMapPath());
         $custom_map = [
             'prices' => function (array $payload, string $key) {
                 $prices = $payload['values']['price'];
@@ -56,7 +60,7 @@ class ProductImportMap extends AbstractMap
             'created' => 'created',
             'associations' => 'associations',
         ];
-        return array_merge(reset($generated_map), $custom_map);
+        return array_merge(reset($generated_map), reset($additional_map), $custom_map);
     }
 
     /**
