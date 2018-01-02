@@ -23,8 +23,10 @@ class ProcessConfig extends SprykerMiddlewareProcessConfig
     {
         return [
             ProcessConstants::MAP_GENERATOR_PROCESS => [
+                JsonReaderStagePlugin::PLUGIN_NAME,
                 MapGeneratorMapperStagePlugin::PLUGIN_NAME,
                 MapGeneratorTranslatorStagePlugin::PLUGIN_NAME,
+                JsonWriterStagePlugin::PLUGIN_NAME,
             ],
             ProcessConstants::PRODUCT_IMPORT_PROCESS => [
                 JsonReaderStagePlugin::PLUGIN_NAME,
@@ -42,6 +44,7 @@ class ProcessConfig extends SprykerMiddlewareProcessConfig
     {
         return [
             ProcessConstants::PRODUCT_IMPORT_PROCESS => NullIteratorPlugin::PLUGIN_NAME,
+            ProcessConstants::MAP_GENERATOR_PROCESS => NullIteratorPlugin::PLUGIN_NAME,
         ];
     }
 

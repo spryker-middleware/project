@@ -1,1 +1,1 @@
-{ "active_field_name": "enabled", "sku_field_name": "identifier", "link_field_name": "_links.self.href", "categories_field_name": "categories" }
+[{ "active_field_name": "enabled", "sku_field_name": "identifier", "link_field_name": "_links.self.href", "categories_field_name": "categories" }]
