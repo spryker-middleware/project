@@ -7,7 +7,6 @@ use Middleware\Zed\Process\Communication\Plugin\MapGeneratorMapperStagePlugin;
 use Middleware\Zed\Process\Communication\Plugin\MapGeneratorTranslatorStagePlugin;
 use Middleware\Zed\Process\Communication\Plugin\ProductImportMapperStagePlugin;
 use Middleware\Zed\Process\Communication\Plugin\ProductImportTranslatorStagePlugin;
-use SprykerMiddleware\Zed\Process\Business\Iterator\NullIterator;
 use SprykerMiddleware\Zed\Process\Communication\Plugin\Iterator\NullIteratorPlugin;
 use SprykerMiddleware\Zed\Process\Communication\Plugin\JsonReaderStagePlugin;
 use SprykerMiddleware\Zed\Process\Communication\Plugin\JsonWriterStagePlugin;
@@ -15,29 +14,10 @@ use SprykerMiddleware\Zed\Process\ProcessDependencyProvider as SprykerMiddleware
 
 class ProcessDependencyProvider extends SprykerMiddlewareProcessDependencyProvider
 {
-    const MAP_GENERATOR_PIPELINE = 'MAP_GENERATOR_PIPELINE';
-    const PRODUCT_IMPORT_PIPELINE = 'PRODUCT_IMPORT_PIPELINE';
-    const MAP_GENERATOR_PROCESS = 'MAP_GENERATOR_PROCESS';
-    const PRODUCT_IMPORT_PROCESS = 'PRODUCT_IMPORT_PROCESS';
-
-    const PIPELINE = 'PIPELINE';
-
-    /**
-     * @return array
-     */
-    public function getProcesses(): array
-    {
-        return [
-            static::PRODUCT_IMPORT_PROCESS => [
-                static::ITERATOR => NullIterator::class,
-            ],
-        ];
-    }
-
     /**
      * @return \SprykerMiddleware\Zed\Process\Dependency\Plugin\Hook\PreProcessorHookPluginInterface[][]
      */
-    public function getPreProcessorHooksStack(): array
+    protected function getPreProcessorHooksStack(): array
     {
         return [
             new DummyPreProcessorHookPlugin(),
@@ -47,7 +27,7 @@ class ProcessDependencyProvider extends SprykerMiddlewareProcessDependencyProvid
     /**
      * @return \SprykerMiddleware\Zed\Process\Dependency\Plugin\Hook\PostProcessorHookPluginInterface[][]
      */
-    public function getPostProcessorHooksStack(): array
+    protected function getPostProcessorHooksStack(): array
     {
         return [
             new DummyPostProcessorHookPlugin(),
@@ -57,7 +37,7 @@ class ProcessDependencyProvider extends SprykerMiddlewareProcessDependencyProvid
     /**
      * @return \SprykerMiddleware\Zed\Process\Dependency\Plugin\StagePluginInterface[]
      */
-    public function getStagePluginsStack()
+    protected function getStagePluginsStack()
     {
         return [
             new JsonReaderStagePlugin(),
@@ -72,7 +52,7 @@ class ProcessDependencyProvider extends SprykerMiddlewareProcessDependencyProvid
     /**
      * @return \SprykerMiddleware\Zed\Process\Dependency\Plugin\Iterator\ProcessIteratorPluginInterface[]
      */
-    public function getIteratorsStack()
+    protected function getIteratorsStack()
     {
         return [
             new NullIteratorPlugin(),

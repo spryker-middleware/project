@@ -20,4 +20,12 @@ class ProductImportTranslatorStagePlugin extends AbstractTranslatorStagePlugin
         return $this->getFacade()
             ->getProductImportTranslatorConfig();
     }
+
+    /**
+     * @return string
+     */
+    public function getName(): string
+    {
+        return static::PLUGIN_NAME;
+    }
 }

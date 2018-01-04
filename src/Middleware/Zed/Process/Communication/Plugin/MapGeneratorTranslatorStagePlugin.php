@@ -20,4 +20,12 @@ class MapGeneratorTranslatorStagePlugin extends AbstractTranslatorStagePlugin
         return $this->getFacade()
             ->getMapGeneratorTranslatorConfig();
     }
+
+    /**
+     * @return string
+     */
+    public function getName(): string
+    {
+        return static::PLUGIN_NAME;
+    }
 }

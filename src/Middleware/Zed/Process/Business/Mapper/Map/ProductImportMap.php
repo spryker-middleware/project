@@ -4,6 +4,7 @@ namespace Middleware\Zed\Process\Business\Mapper\Map;
 
 use SprykerMiddleware\Shared\Process\ProcessConfig;
 use SprykerMiddleware\Zed\Process\Business\Mapper\Map\AbstractMap;
+use SprykerMiddleware\Zed\Process\Business\Mapper\Map\MapInterface;
 
 class ProductImportMap extends AbstractMap
 {
@@ -42,7 +43,7 @@ class ProductImportMap extends AbstractMap
             },
             'values' => [
                 'values',
-                'itemMap' => [
+                MapInterface::ITEM_MAP => [
                     'value' => function (array $item, string $key) {
                         $mappedItem = [];
                         foreach ($item as $element) {
@@ -51,7 +52,7 @@ class ProductImportMap extends AbstractMap
                         return $mappedItem;
                     },
                 ],
-                'except' => ['price', 'verschliessbarkeit', 'dach', 'material'],
+                MapInterface::EXCEPT => ['price', 'verschliessbarkeit', 'dach', 'material'],
             ],
             'created' => 'created',
             'associations' => 'associations',

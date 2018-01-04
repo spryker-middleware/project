@@ -20,4 +20,12 @@ class MapGeneratorMapperStagePlugin extends AbstractMapperStagePlugin
         return $this->getFacade()
             ->getMapGeneratorMapperConfig();
     }
+
+    /**
+     * @return string
+     */
+    public function getName(): string
+    {
+        return static::PLUGIN_NAME;
+    }
 }

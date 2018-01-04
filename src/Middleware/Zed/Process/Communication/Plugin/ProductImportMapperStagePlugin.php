@@ -20,4 +20,12 @@ class ProductImportMapperStagePlugin extends AbstractMapperStagePlugin
         return $this->getFacade()
             ->getProductImportMapperConfig();
     }
+
+    /**
+     * @return string
+     */
+    public function getName(): string
+    {
+        return static::PLUGIN_NAME;
+    }
 }
