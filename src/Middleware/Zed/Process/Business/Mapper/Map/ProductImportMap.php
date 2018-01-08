@@ -40,27 +40,8 @@ class ProductImportMap extends AbstractMap
 
                 return $mappedPrices;
             },
-            'localizedAttributes' => [
-                'values.localizedAttributes',
-                'itemMap' => [
-                        'keep' => 'keep',
-                ],
-                'itemExcept' => ['leaveOut', 'data'],
-                'except' => [],
-            ],
-            'values' => [
-                'values',
-                'itemMap' => [
-                    'value' => function (array $item, string $key) {
-                        $mappedItem = [];
-                        foreach ($item as $element) {
-                            $mappedItem[$element['locale']] = $element['data'];
-                        }
-                        return $mappedItem;
-                    },
-                ],
-                'except' => ['price', 'verschliessbarkeit', 'dach', 'material', 'localizedAttributes'],
-            ],
+            'localizedAttributes' => 'values.localizedAttributes',
+            'values' => 'values',
             'created' => 'created',
             'associations' => 'associations',
         ];
