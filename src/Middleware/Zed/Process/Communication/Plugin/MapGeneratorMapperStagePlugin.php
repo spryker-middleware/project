@@ -10,8 +10,6 @@ use SprykerMiddleware\Zed\Process\Communication\Plugin\AbstractMapperStagePlugin
  */
 class MapGeneratorMapperStagePlugin extends AbstractMapperStagePlugin
 {
-    const PLUGIN_NAME = 'MAP_GENERATOR_MAPPER_STAGE_PLUGIN';
-
     /**
      * @return \Generated\Shared\Transfer\MapperConfigTransfer
      */
@@ -19,13 +17,5 @@ class MapGeneratorMapperStagePlugin extends AbstractMapperStagePlugin
     {
         return $this->getFacade()
             ->getMapGeneratorMapperConfig();
-    }
-
-    /**
-     * @return string
-     */
-    public function getName(): string
-    {
-        return static::PLUGIN_NAME;
     }
 }
