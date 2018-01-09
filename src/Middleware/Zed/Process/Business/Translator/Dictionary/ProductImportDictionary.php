@@ -33,14 +33,38 @@ class ProductImportDictionary extends AbstractDictionary
                 'MoneyDecimalToInteger',
             ],
             'created' => 'StringToDateTime',
-            'values' => function ($value, $key, $payload) {
+            'values.*' => function ($value, $key, $payload) {
                 $result = [];
-                foreach ($value as $key => $data) {
-                    $result[$key] = $data['value'];
+                foreach ($value as $element) {
+                    $result[$element['locale']] = $element['data'];
                 }
-
                 return $result;
             },
+            'values' => [
+                [
+                    'ExcludeKeysAssociativeFilter',
+                    'options' => [
+                        'excludeKeys' => [
+                            'price',
+                            'verschliessbarkeit',
+                            'dach',
+                            'material',
+                            'localizedAttributes',
+                        ],
+                    ],
+                ],
+            ],
+            'localizedAttributes.*' => [
+                [
+                    'WhitelistKeysAssociativeFilter',
+                    'options' => [
+                        'whitelistKeys' => [
+                            'locale',
+                            'keep',
+                        ],
+                    ],
+                ],
+            ],
         ];
     }
 }
