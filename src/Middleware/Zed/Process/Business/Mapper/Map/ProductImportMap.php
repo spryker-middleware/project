@@ -10,14 +10,23 @@ class ProductImportMap extends AbstractMap
     /**
      * @var string
      */
-    protected $preGeneratedMapPath;
+    protected $generatedMapPath;
 
     /**
-     * @param string $preGeneratedMapPath
+     * @var string
      */
-    public function __construct(string $preGeneratedMapPath = '')
+    protected $additionalMapPath;
+
+    /**
+     * ProductImportMap constructor.
+     *
+     * @param string $generatedMapPath
+     * @param string $additionalMapPath
+     */
+    public function __construct(string $generatedMapPath, string $additionalMapPath)
     {
-        $this->preGeneratedMapPath = $preGeneratedMapPath;
+        $this->generatedMapPath = $generatedMapPath;
+        $this->additionalMapPath = $additionalMapPath;
     }
 
     /**
@@ -25,7 +34,8 @@ class ProductImportMap extends AbstractMap
      */
     protected function getMap(): array
     {
-        $generated_map = ($this->preGeneratedMapPath != '') ? json_decode(file_get_contents($this->preGeneratedMapPath), true) : [];
+        $generated_map = $this->readMapFromFile($this->generatedMapPath);
+        $additional_map = $this->readMapFromFile($this->additionalMapPath);
         $custom_map = [
             'prices' => function (array $payload, string $key) {
                 $prices = $payload['values']['price'];
@@ -45,7 +55,7 @@ class ProductImportMap extends AbstractMap
             'created' => 'created',
             'associations' => 'associations',
         ];
-        return array_merge(reset($generated_map), $custom_map);
+        return array_merge(reset($generated_map), reset($additional_map), $custom_map);
     }
 
     /**
