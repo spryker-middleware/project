@@ -34,7 +34,7 @@ class ProductImportLoggerConfig extends MiddlewareLoggerConfig
             $this->getLogFilePath(),
             $this->loggerSettings->getVerboseLevel()
         );
-        $formatter = new LogstashFormatter(static::CHANNEL_NAME);
+        $formatter = new LogstashFormatter($this->getChannelName());
         $streamHandler->setFormatter($formatter);
 
         return $streamHandler;

@@ -86,7 +86,10 @@ class ProcessBusinessFactory extends SprykerMiddlewareProcessBusinessFactory
      */
     public function createProductImportMap(): MapInterface
     {
-        return new ProductImportMap($this->getConfig()->getMapGeneratorOutputPath());
+        return new ProductImportMap(
+            $this->getConfig()->getMapGeneratorOutputPath(),
+            $this->getConfig()->getProductImportAdditionalMapPath()
+        );
     }
 
     /**
@@ -142,7 +145,7 @@ class ProcessBusinessFactory extends SprykerMiddlewareProcessBusinessFactory
     protected function createMapGeneratorAggregator(AggregatorSettingsTransfer $aggregatorSettingsTransfer): AggregatorInterface
     {
         $aggregatorSettingsTransfer->getWriterConfig()->setDestination($this->getConfig()->getMapGeneratorOutputPath());
-
+        $aggregatorSettingsTransfer->setThreshold($this->getConfig()->getDefaultThreshold());
         return new BatchAggregator(
             $this->createFileWriter($aggregatorSettingsTransfer->getWriterConfig()),
             $this->createJsonRenderer(),
@@ -158,7 +161,7 @@ class ProcessBusinessFactory extends SprykerMiddlewareProcessBusinessFactory
     protected function createProductImportAggregator(AggregatorSettingsTransfer $aggregatorSettingsTransfer): AggregatorInterface
     {
         $aggregatorSettingsTransfer->getWriterConfig()->setDestination($this->getConfig()->getProductImportOutputPath());
-
+        $aggregatorSettingsTransfer->setThreshold($this->getConfig()->getDefaultThreshold());
         return new BatchAggregator(
             $this->createFileWriter($aggregatorSettingsTransfer->getWriterConfig()),
             $this->createJsonRenderer(),
