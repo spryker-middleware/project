@@ -10,8 +10,6 @@ use SprykerMiddleware\Zed\Process\Communication\Plugin\AbstractMapperStagePlugin
  */
 class ProductImportMapperStagePlugin extends AbstractMapperStagePlugin
 {
-    const PLUGIN_NAME = 'PRODUCT_IMPORT_MAPPER_STAGE_PLUGIN';
-
     /**
      * @return \Generated\Shared\Transfer\MapperConfigTransfer
      */
@@ -19,13 +17,5 @@ class ProductImportMapperStagePlugin extends AbstractMapperStagePlugin
     {
         return $this->getFacade()
             ->getProductImportMapperConfig();
-    }
-
-    /**
-     * @return string
-     */
-    public function getName(): string
-    {
-        return static::PLUGIN_NAME;
     }
 }
