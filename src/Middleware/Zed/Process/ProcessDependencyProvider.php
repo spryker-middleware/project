@@ -10,6 +10,7 @@ use Middleware\Zed\Process\Communication\Plugin\ProductImportTranslatorStagePlug
 use SprykerMiddleware\Zed\Process\Communication\Plugin\Iterator\NullIteratorPlugin;
 use SprykerMiddleware\Zed\Process\Communication\Plugin\JsonReaderStagePlugin;
 use SprykerMiddleware\Zed\Process\Communication\Plugin\JsonWriterStagePlugin;
+use SprykerMiddleware\Zed\Process\Communication\Plugin\Stream\JsonStreamPlugin;
 use SprykerMiddleware\Zed\Process\ProcessDependencyProvider as SprykerMiddlewareProcessDependencyProvider;
 
 class ProcessDependencyProvider extends SprykerMiddlewareProcessDependencyProvider
@@ -56,6 +57,16 @@ class ProcessDependencyProvider extends SprykerMiddlewareProcessDependencyProvid
     {
         return [
             new NullIteratorPlugin(),
+        ];
+    }
+
+    /**
+     * @return \SprykerMiddleware\Zed\Process\Dependency\Plugin\Stream\ProcessStreamPluginInterface[]
+     */
+    protected function getStreamPluginsStack()
+    {
+        return [
+            new JsonStreamPlugin(),
         ];
     }
 }

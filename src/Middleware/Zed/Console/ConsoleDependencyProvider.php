@@ -23,7 +23,6 @@ use Spryker\Zed\Kernel\Container;
 use Spryker\Zed\Transfer\Communication\Console\GeneratorConsole;
 use Spryker\Zed\Transfer\Communication\Console\ValidatorConsole;
 use SprykerMiddleware\Zed\Process\Communication\Console\ProcessConsole;
-use SprykerMiddleware\Zed\Process\Communication\Plugin\ServiceProvider\ProcessServiceProvider;
 
 class ConsoleDependencyProvider extends SprykerDependencyProvider
 {
@@ -58,17 +57,5 @@ class ConsoleDependencyProvider extends SprykerDependencyProvider
             $commands[] = new GenerateIdeAutoCompletionConsole();
         }
         return $commands;
-    }
-
-    /**
-     * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return \Silex\ServiceProviderInterface[]
-     */
-    protected function getServiceProviders(Container $container)
-    {
-        $serviceProviders = parent::getServiceProviders($container);
-        $serviceProviders[] = new ProcessServiceProvider();
-        return $serviceProviders;
     }
 }
