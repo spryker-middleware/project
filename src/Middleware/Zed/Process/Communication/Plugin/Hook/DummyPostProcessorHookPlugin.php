@@ -11,20 +11,10 @@ use SprykerMiddleware\Zed\Process\Dependency\Plugin\Hook\PostProcessorHookPlugin
  */
 class DummyPostProcessorHookPlugin extends AbstractPlugin implements PostProcessorHookPluginInterface
 {
-    const PLUGIN_NAME = 'DUMMY_POST_PROCESSOR_HOOK_PLUGIN';
-
     /**
      * @return void
      */
     public function process(): void
     {
-    }
-
-    /**
-     * @return string
-     */
-    public function getName(): string
-    {
-        return static::PLUGIN_NAME;
     }
 }

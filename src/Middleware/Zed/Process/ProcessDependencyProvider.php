@@ -1,12 +1,16 @@
 <?php
 namespace Middleware\Zed\Process;
 
+use Middleware\Zed\Process\Communication\Plugin\Configuration\MapGeneratorConfigurationPlugin;
+use Middleware\Zed\Process\Communication\Plugin\Configuration\ProductImportConfigurationPlugin;
 use Middleware\Zed\Process\Communication\Plugin\Hook\DummyPostProcessorHookPlugin;
 use Middleware\Zed\Process\Communication\Plugin\Hook\DummyPreProcessorHookPlugin;
 use Middleware\Zed\Process\Communication\Plugin\MapGeneratorMapperStagePlugin;
 use Middleware\Zed\Process\Communication\Plugin\MapGeneratorTranslatorStagePlugin;
 use Middleware\Zed\Process\Communication\Plugin\ProductImportMapperStagePlugin;
 use Middleware\Zed\Process\Communication\Plugin\ProductImportTranslatorStagePlugin;
+use Spryker\Zed\Kernel\Container;
+use SprykerMiddleware\Zed\Process\Communication\Plugin\Configuration\DefaultConfigurationProfilePlugin;
 use SprykerMiddleware\Zed\Process\Communication\Plugin\Iterator\NullIteratorPlugin;
 use SprykerMiddleware\Zed\Process\Communication\Plugin\JsonReaderStagePlugin;
 use SprykerMiddleware\Zed\Process\Communication\Plugin\JsonWriterStagePlugin;
@@ -15,10 +19,120 @@ use SprykerMiddleware\Zed\Process\ProcessDependencyProvider as SprykerMiddleware
 
 class ProcessDependencyProvider extends SprykerMiddlewareProcessDependencyProvider
 {
+    const PRODUCT_IMPORT_ITERATOR_PLUGIN = 'PRODUCT_IMPORT_ITERATOR_PLUGIN';
+    const PRODUCT_IMPORT_STAGE_PLUGINS = 'PRODUCT_IMPORT_STAGE_PLUGINS';
+    const PRODUCT_IMPORT_PRE_PROCESSOR_PLUGINS = 'PRODUCT_IMPORT_PRE_PROCESSOR_PLUGINS';
+    const PRODUCT_IMPORT_POST_PROCESSOR_PLUGINS = 'PRODUCT_IMPORT_POST_PROCESSOR_PLUGINS';
+    const MAP_GENERATOR_ITERATOR_PLUGIN = 'MAP_GENERATOR_ITERATOR_PLUGIN';
+    const MAP_GENERATOR_STAGE_PLUGINS = 'MAP_GENERATOR_STAGE_PLUGINS';
+
+    /**
+     * @param \Spryker\Zed\Kernel\Container $container
+     *
+     * @return \Spryker\Zed\Kernel\Container
+     */
+    public function provideCommunicationLayerDependencies(Container $container)
+    {
+        $container = parent::provideCommunicationLayerDependencies($container);
+        $this->addProductImportProcessPlugins($container);
+        $this->addMapGeneratorProcessPlugins($container);
+
+        return $container;
+    }
+
+    /**
+     * @return \SprykerMiddleware\Zed\Process\Dependency\Plugin\Configuration\ConfigurationProfilePluginInterface[]
+     */
+    protected function getConfigurationProfilePluginsStack()
+    {
+        return [
+            new DefaultConfigurationProfilePlugin(),
+        ];
+    }
+
+    /**
+     * @return \SprykerMiddleware\Zed\Process\Dependency\Plugin\Configuration\ProcessConfigurationPluginInterface[]
+     */
+    protected function getDefaultProcessesPluginsStack()
+    {
+        return [
+            new ProductImportConfigurationPlugin(),
+            new MapGeneratorConfigurationPlugin(),
+        ];
+    }
+
+    /**
+     * @param \Spryker\Zed\Kernel\Container $container
+     *
+     * @return \Spryker\Zed\Kernel\Container
+     */
+    protected function addProductImportProcessPlugins(Container $container)
+    {
+        $container[static::PRODUCT_IMPORT_ITERATOR_PLUGIN] = function () {
+            return $this->getProductImportIteratorPlugin();
+        };
+
+        $container[static::PRODUCT_IMPORT_STAGE_PLUGINS] = function () {
+            return $this->getProductImportStagePluginsStack();
+        };
+
+        $container[static::PRODUCT_IMPORT_PRE_PROCESSOR_PLUGINS] = function () {
+            return $this->getProductImportPreProcessorPluginsStack();
+        };
+
+        $container[static::PRODUCT_IMPORT_POST_PROCESSOR_PLUGINS] = function () {
+            return $this->getProductImportPostProcessorPluginsStack();
+        };
+
+        return $container;
+    }
+
+    /**
+     * @param \Spryker\Zed\Kernel\Container $container
+     *
+     * @return \Spryker\Zed\Kernel\Container
+     */
+    protected function addMapGeneratorProcessPlugins(Container $container)
+    {
+        $container[static::MAP_GENERATOR_ITERATOR_PLUGIN] = function () {
+            return $this->getMapGeneratorIteratorPlugin();
+        };
+
+        $container[static::MAP_GENERATOR_STAGE_PLUGINS] = function () {
+            return $this->getMapGeneratorStagePluginsStack();
+        };
+
+        return $container;
+    }
+
+    /**
+     * @return \SprykerMiddleware\Zed\Process\Dependency\Plugin\Iterator\ProcessIteratorPluginInterface
+     */
+    protected function getProductImportIteratorPlugin()
+    {
+        return $this->getNullIterator();
+    }
+
+    /**
+     * @return \SprykerMiddleware\Zed\Process\Dependency\Plugin\Iterator\ProcessIteratorPluginInterface
+     */
+    protected function getMapGeneratorIteratorPlugin()
+    {
+        return $this->getNullIterator();
+    }
+
+    /**
+     * @return \SprykerMiddleware\Zed\Process\Dependency\Plugin\Iterator\ProcessIteratorPluginInterface
+     */
+    protected function getNullIterator()
+    {
+        return new NullIteratorPlugin();
+    }
+
     /**
      * @return \SprykerMiddleware\Zed\Process\Dependency\Plugin\Hook\PreProcessorHookPluginInterface[][]
      */
-    protected function getPreProcessorHooksStack(): array
+    protected function getProductImportPreProcessorPluginsStack(): array
     {
         return [
             new DummyPreProcessorHookPlugin(),
@@ -28,7 +142,7 @@ class ProcessDependencyProvider extends SprykerMiddlewareProcessDependencyProvid
     /**
      * @return \SprykerMiddleware\Zed\Process\Dependency\Plugin\Hook\PostProcessorHookPluginInterface[][]
      */
-    protected function getPostProcessorHooksStack(): array
+    protected function getProductImportPostProcessorPluginsStack(): array
     {
         return [
             new DummyPostProcessorHookPlugin(),
@@ -38,25 +152,26 @@ class ProcessDependencyProvider extends SprykerMiddlewareProcessDependencyProvid
     /**
      * @return \SprykerMiddleware\Zed\Process\Dependency\Plugin\StagePluginInterface[]
      */
-    protected function getStagePluginsStack()
+    protected function getProductImportStagePluginsStack()
     {
         return [
             new JsonReaderStagePlugin(),
             new ProductImportMapperStagePlugin(),
             new ProductImportTranslatorStagePlugin(),
             new JsonWriterStagePlugin(),
-            new MapGeneratorMapperStagePlugin(),
-            new MapGeneratorTranslatorStagePlugin(),
         ];
     }
-    
+
     /**
-     * @return \SprykerMiddleware\Zed\Process\Dependency\Plugin\Iterator\ProcessIteratorPluginInterface[]
+     * @return \SprykerMiddleware\Zed\Process\Dependency\Plugin\StagePluginInterface[]
      */
-    protected function getIteratorsStack()
+    protected function getMapGeneratorStagePluginsStack()
     {
         return [
-            new NullIteratorPlugin(),
+            new JsonReaderStagePlugin(),
+            new MapGeneratorMapperStagePlugin(),
+            new MapGeneratorTranslatorStagePlugin(),
+            new JsonWriterStagePlugin(),
         ];
     }
 

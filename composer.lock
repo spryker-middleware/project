@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "ed7775779138db6fe514144422dc3ed5",
+    "content-hash": "e276736683a20731d85801ae1bef82ee",
     "packages": [
         {
             "name": "container-interop/container-interop",
@@ -773,17 +773,16 @@
         },
         {
             "name": "spryker-middleware/process",
-            "version": "dev-feature/SM-61-stream-interface",
+            "version": "dev-dev",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker-middleware/process.git",
-                "reference": "1802110fe610a249dec8058a18892b0be6952389"
+                "reference": "f830e7c004d2284058b9cdb4a9646c0c7261f4aa"
             },
             "require": {
                 "league/pipeline": "^0.3.0",
                 "spryker/console": "^4.0.0",
                 "spryker/development": "^3.0.0",
-                "spryker/log": "^3.0.0",
                 "spryker/transfer": "^3.4.0",
                 "spryker/util-encoding": "^2.0.0"
             },
@@ -797,7 +796,7 @@
                 "MIT"
             ],
             "description": "Process module",
-            "time": "2018-01-11T10:21:19+00:00"
+            "time": "2018-01-09T11:16:35+00:00"
         },
         {
             "name": "spryker/config",
@@ -939,11 +938,11 @@
         },
         {
             "name": "spryker/development",
-            "version": "3.6.0",
+            "version": "3.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/Development.git",
-                "reference": "0a35270545a1c26b9fc951a9f5c65e613f0b9b7f",
+                "reference": "81e81382735fd2eebb022ba879f0ab8f00dea430",
                 "mirrors": [
                     {
                         "url": "https://code.spryker.com:/repo/private/mirrors/%package%/%normalizedUrl%.%type%",
@@ -953,8 +952,8 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/Development/zipball/0a35270545a1c26b9fc951a9f5c65e613f0b9b7f",
-                "reference": "0a35270545a1c26b9fc951a9f5c65e613f0b9b7f",
+                "url": "https://api.github.com/repos/spryker/Development/zipball/81e81382735fd2eebb022ba879f0ab8f00dea430",
+                "reference": "81e81382735fd2eebb022ba879f0ab8f00dea430",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -1001,7 +1000,7 @@
             "support": {
                 "source": "https://github.com/spryker/Development/tree/master"
             },
-            "time": "2018-01-10T13:15:10+00:00"
+            "time": "2017-12-12T14:50:03+00:00"
         },
         {
             "name": "spryker/error-handler",
@@ -1248,11 +1247,11 @@
         },
         {
             "name": "spryker/kernel",
-            "version": "3.16.0",
+            "version": "3.15.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/Kernel.git",
-                "reference": "a15ad4c94c92191b2245c044c07aaea60ca92b4c",
+                "reference": "3ed4f073eb4a0be435b04a6816534032db614102",
                 "mirrors": [
                     {
                         "url": "https://code.spryker.com:/repo/private/mirrors/%package%/%normalizedUrl%.%type%",
@@ -1262,8 +1261,8 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/Kernel/zipball/a15ad4c94c92191b2245c044c07aaea60ca92b4c",
-                "reference": "a15ad4c94c92191b2245c044c07aaea60ca92b4c",
+                "url": "https://api.github.com/repos/spryker/Kernel/zipball/3ed4f073eb4a0be435b04a6816534032db614102",
+                "reference": "3ed4f073eb4a0be435b04a6816534032db614102",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -1313,7 +1312,7 @@
             "support": {
                 "source": "https://github.com/spryker/Kernel/tree/master"
             },
-            "time": "2018-01-10T11:31:54+00:00"
+            "time": "2017-12-12T08:27:34+00:00"
         },
         {
             "name": "spryker/log",
@@ -1539,11 +1538,11 @@
         },
         {
             "name": "spryker/queue",
-            "version": "1.1.0",
+            "version": "1.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/Queue.git",
-                "reference": "b04e8d5451d3376a42d75d5dab4d0a5559da2ca5",
+                "reference": "da99a69272b5f476a60e06ce986232d3d711f065",
                 "mirrors": [
                     {
                         "url": "https://code.spryker.com:/repo/private/mirrors/%package%/%normalizedUrl%.%type%",
@@ -1553,8 +1552,8 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/Queue/zipball/b04e8d5451d3376a42d75d5dab4d0a5559da2ca5",
-                "reference": "b04e8d5451d3376a42d75d5dab4d0a5559da2ca5",
+                "url": "https://api.github.com/repos/spryker/Queue/zipball/da99a69272b5f476a60e06ce986232d3d711f065",
+                "reference": "da99a69272b5f476a60e06ce986232d3d711f065",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -1591,9 +1590,9 @@
             ],
             "description": "Queue module",
             "support": {
-                "source": "https://github.com/spryker/Queue/tree/master"
+                "source": "https://github.com/spryker/Queue/tree/1.0.2"
             },
-            "time": "2018-01-09T17:12:08+00:00"
+            "time": "2017-12-18T10:26:59+00:00"
         },
         {
             "name": "spryker/silex",
@@ -1721,11 +1720,11 @@
         },
         {
             "name": "spryker/transfer",
-            "version": "3.5.2",
+            "version": "3.5.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/Transfer.git",
-                "reference": "b5f512aa7f654526a31082317c7b1ed9d34c734f",
+                "reference": "228ff69a9348994c7fd258f048bf20e3b65045db",
                 "mirrors": [
                     {
                         "url": "https://code.spryker.com:/repo/private/mirrors/%package%/%normalizedUrl%.%type%",
@@ -1735,8 +1734,8 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/Transfer/zipball/b5f512aa7f654526a31082317c7b1ed9d34c734f",
-                "reference": "b5f512aa7f654526a31082317c7b1ed9d34c734f",
+                "url": "https://api.github.com/repos/spryker/Transfer/zipball/228ff69a9348994c7fd258f048bf20e3b65045db",
+                "reference": "228ff69a9348994c7fd258f048bf20e3b65045db",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -1780,17 +1779,17 @@
             ],
             "description": "Transfer module",
             "support": {
-                "source": "https://github.com/spryker/Transfer/tree/master"
+                "source": "https://github.com/spryker/Transfer/tree/3.5.1"
             },
-            "time": "2018-01-10T11:31:54+00:00"
+            "time": "2017-10-25T13:22:17+00:00"
         },
         {
             "name": "spryker/twig",
-            "version": "3.3.0",
+            "version": "3.2.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/Twig.git",
-                "reference": "ee6fa0db7fec8c55249af046342ae2edb99a88f4",
+                "reference": "af7d8317ff09538c9e39da4a9769169417fae020",
                 "mirrors": [
                     {
                         "url": "https://code.spryker.com:/repo/private/mirrors/%package%/%normalizedUrl%.%type%",
@@ -1800,8 +1799,8 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/Twig/zipball/ee6fa0db7fec8c55249af046342ae2edb99a88f4",
-                "reference": "ee6fa0db7fec8c55249af046342ae2edb99a88f4",
+                "url": "https://api.github.com/repos/spryker/Twig/zipball/af7d8317ff09538c9e39da4a9769169417fae020",
+                "reference": "af7d8317ff09538c9e39da4a9769169417fae020",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -1835,13 +1834,14 @@
                 }
             },
             "autoload": {
-                "psr-4": {
-                    "Spryker\\": "src/Spryker/"
+                "psr-0": {
+                    "Spryker": "src/"
                 }
             },
             "autoload-dev": {
-                "psr-4": {
-                    "SprykerTest\\": "tests/SprykerTest/"
+                "psr-0": {
+                    "Functional": "tests/",
+                    "Unit": "tests/"
                 }
             },
             "notification-url": "https://code.spryker.com/repo/private/downloads/",
@@ -1850,9 +1850,9 @@
             ],
             "description": "Twig module",
             "support": {
-                "source": "https://github.com/spryker/Twig/tree/master"
+                "source": "https://github.com/spryker/Twig/tree/3.2.3"
             },
-            "time": "2017-11-09T10:05:19+00:00"
+            "time": "2017-09-26T15:54:56+00:00"
         },
         {
             "name": "spryker/util-encoding",
@@ -5810,7 +5810,7 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/architecture-sniffer.git",
-                "reference": "0479d9e92130d60aa117e7b7600d7e1ed1806c78",
+                "reference": "44ca169341da400d3552ba7c18eb842ed9616339",
                 "mirrors": [
                     {
                         "url": "https://code.spryker.com:/repo/private/mirrors/%package%/%normalizedUrl%.%type%",
@@ -5820,8 +5820,8 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/architecture-sniffer/zipball/0479d9e92130d60aa117e7b7600d7e1ed1806c78",
-                "reference": "0479d9e92130d60aa117e7b7600d7e1ed1806c78",
+                "url": "https://api.github.com/repos/spryker/architecture-sniffer/zipball/44ca169341da400d3552ba7c18eb842ed9616339",
+                "reference": "44ca169341da400d3552ba7c18eb842ed9616339",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -5882,7 +5882,7 @@
                 "source": "https://github.com/spryker/architecture-sniffer",
                 "issues": "https://github.com/spryker/architecture-sniffer/issues"
             },
-            "time": "2018-01-10T11:56:59+00:00"
+            "time": "2017-12-07T14:54:26+00:00"
         },
         {
             "name": "spryker/code-generator",
