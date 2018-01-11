@@ -11,6 +11,8 @@ $config[ProcessConstants::GENERATED_MAP_FILE_PATH] = APPLICATION_ROOT_DIR . '/fi
 $config[ProcessConstants::PRODUCT_IMPORT_FILE_PATH] = APPLICATION_ROOT_DIR . '/files/product.txt';
 // Output file for product import process (might be used to check results)
 $config[ProcessConstants::PRODUCT_IMPORT_OUTPUT_PATH] = APPLICATION_ROOT_DIR . '/files/output/product_import.output';
+// Additional map file for product import map
+$config[ProcessConstants::PRODUCT_IMPORT_ADDITIONAL_MAP_FILE_PATH] = APPLICATION_ROOT_DIR . '/files/config/additional_product_import.map';
 
 $config[ProcessConstants::LOG_FILE_PATH_PRODUCT_IMPORT] = sprintf(
     '%s/data/logs/%s/application.log',

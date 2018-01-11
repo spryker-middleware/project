@@ -36,7 +36,10 @@ class ProcessBusinessFactory extends SprykerMiddlewareProcessBusinessFactory
      */
     public function createProductImportMap(): MapInterface
     {
-        return new ProductImportMap($this->getConfig()->getMapGeneratorOutputPath());
+        return new ProductImportMap(
+            $this->getConfig()->getMapGeneratorOutputPath(),
+            $this->getConfig()->getProductImportAdditionalMapPath()
+        );
     }
 
     /**

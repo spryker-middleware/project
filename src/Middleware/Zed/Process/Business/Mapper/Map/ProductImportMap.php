@@ -4,21 +4,29 @@ namespace Middleware\Zed\Process\Business\Mapper\Map;
 
 use SprykerMiddleware\Shared\Process\ProcessConfig;
 use SprykerMiddleware\Zed\Process\Business\Mapper\Map\AbstractMap;
-use SprykerMiddleware\Zed\Process\Business\Mapper\Map\MapInterface;
 
 class ProductImportMap extends AbstractMap
 {
     /**
      * @var string
      */
-    protected $preGeneratedMapPath;
+    protected $generatedMapPath;
 
     /**
-     * @param string $preGeneratedMapPath
+     * @var string
      */
-    public function __construct(string $preGeneratedMapPath = '')
+    protected $additionalMapPath;
+
+    /**
+     * ProductImportMap constructor.
+     *
+     * @param string $generatedMapPath
+     * @param string $additionalMapPath
+     */
+    public function __construct(string $generatedMapPath, string $additionalMapPath)
     {
-        $this->preGeneratedMapPath = $preGeneratedMapPath;
+        $this->generatedMapPath = $generatedMapPath;
+        $this->additionalMapPath = $additionalMapPath;
     }
 
     /**
@@ -26,7 +34,8 @@ class ProductImportMap extends AbstractMap
      */
     protected function getMap(): array
     {
-        $generated_map = ($this->preGeneratedMapPath != '') ? json_decode(file_get_contents($this->preGeneratedMapPath), true) : [];
+        $generated_map = $this->readMapFromFile($this->generatedMapPath);
+        $additional_map = $this->readMapFromFile($this->additionalMapPath);
         $custom_map = [
             'prices' => function (array $payload, string $key) {
                 $prices = $payload['values']['price'];
@@ -41,23 +50,12 @@ class ProductImportMap extends AbstractMap
 
                 return $mappedPrices;
             },
-            'values' => [
-                'values',
-                MapInterface::ITEM_MAP => [
-                    'value' => function (array $item, string $key) {
-                        $mappedItem = [];
-                        foreach ($item as $element) {
-                            $mappedItem[$element['locale']] = $element['data'];
-                        }
-                        return $mappedItem;
-                    },
-                ],
-                MapInterface::EXCEPT => ['price', 'verschliessbarkeit', 'dach', 'material'],
-            ],
+            'localizedAttributes' => 'values.localizedAttributes',
+            'values' => 'values',
             'created' => 'created',
             'associations' => 'associations',
         ];
-        return array_merge(reset($generated_map), $custom_map);
+        return array_merge(reset($generated_map), reset($additional_map), $custom_map);
     }
 
     /**
@@ -65,6 +63,6 @@ class ProductImportMap extends AbstractMap
      */
     protected function getStrategy(): string
     {
-        return ProcessConfig::MAPPER_STRATEGY_SKIP_UNKNOWN;
+        return ProcessConfig::MAPPER_STRATEGY_COPY_UNKNOWN;
     }
 }
