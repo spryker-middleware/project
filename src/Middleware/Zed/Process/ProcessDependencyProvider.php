@@ -19,10 +19,15 @@ use SprykerMiddleware\Zed\Process\ProcessDependencyProvider as SprykerMiddleware
 
 class ProcessDependencyProvider extends SprykerMiddlewareProcessDependencyProvider
 {
+    const PRODUCT_IMPORT_INPUT_STREAM_PLUGIN = 'PRODUCT_IMPORT_INPUT_STREAM_PLUGIN';
+    const PRODUCT_IMPORT_OUTPUT_STREAM_PLUGIN = 'PRODUCT_IMPORT_OUTPUT_STREAM_PLUGIN';
     const PRODUCT_IMPORT_ITERATOR_PLUGIN = 'PRODUCT_IMPORT_ITERATOR_PLUGIN';
     const PRODUCT_IMPORT_STAGE_PLUGINS = 'PRODUCT_IMPORT_STAGE_PLUGINS';
     const PRODUCT_IMPORT_PRE_PROCESSOR_PLUGINS = 'PRODUCT_IMPORT_PRE_PROCESSOR_PLUGINS';
     const PRODUCT_IMPORT_POST_PROCESSOR_PLUGINS = 'PRODUCT_IMPORT_POST_PROCESSOR_PLUGINS';
+
+    const MAP_GENERATOR_INPUT_STREAM_PLUGIN = 'MAP_GENERATOR_INPUT_STREAM_PLUGIN';
+    const MAP_GENERATOR_OUTPUT_STREAM_PLUGIN = 'MAP_GENERATOR_OUTPUT_STREAM_PLUGIN';
     const MAP_GENERATOR_ITERATOR_PLUGIN = 'MAP_GENERATOR_ITERATOR_PLUGIN';
     const MAP_GENERATOR_STAGE_PLUGINS = 'MAP_GENERATOR_STAGE_PLUGINS';
 
@@ -68,6 +73,13 @@ class ProcessDependencyProvider extends SprykerMiddlewareProcessDependencyProvid
      */
     protected function addProductImportProcessPlugins(Container $container)
     {
+        $container[static::PRODUCT_IMPORT_INPUT_STREAM_PLUGIN] = function () {
+            return new JsonStreamPlugin();
+        };
+        $container[static::PRODUCT_IMPORT_OUTPUT_STREAM_PLUGIN] = function () {
+            return new JsonStreamPlugin();
+        };
+
         $container[static::PRODUCT_IMPORT_ITERATOR_PLUGIN] = function () {
             return $this->getProductImportIteratorPlugin();
         };
@@ -94,6 +106,13 @@ class ProcessDependencyProvider extends SprykerMiddlewareProcessDependencyProvid
      */
     protected function addMapGeneratorProcessPlugins(Container $container)
     {
+        $container[static::MAP_GENERATOR_INPUT_STREAM_PLUGIN] = function () {
+            return new JsonStreamPlugin();
+        };
+        $container[static::MAP_GENERATOR_OUTPUT_STREAM_PLUGIN] = function () {
+            return new JsonStreamPlugin();
+        };
+
         $container[static::MAP_GENERATOR_ITERATOR_PLUGIN] = function () {
             return $this->getMapGeneratorIteratorPlugin();
         };
@@ -172,16 +191,6 @@ class ProcessDependencyProvider extends SprykerMiddlewareProcessDependencyProvid
             new MapGeneratorMapperStagePlugin(),
             new MapGeneratorTranslatorStagePlugin(),
             new JsonWriterStagePlugin(),
-        ];
-    }
-
-    /**
-     * @return \SprykerMiddleware\Zed\Process\Dependency\Plugin\Stream\ProcessStreamPluginInterface[]
-     */
-    protected function getStreamPluginsStack()
-    {
-        return [
-            new JsonStreamPlugin(),
         ];
     }
 }

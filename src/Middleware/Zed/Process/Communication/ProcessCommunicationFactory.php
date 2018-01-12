@@ -18,6 +18,38 @@ class ProcessCommunicationFactory extends SprykerMiddlewareProcessCommunicationF
     }
 
     /**
+     * @return \SprykerMiddleware\Zed\Process\Dependency\Plugin\Stream\InputStreamPluginInterface
+     */
+    public function getProductImportInputStreamPlugin()
+    {
+        return $this->getProvidedDependency(ProcessDependencyProvider::PRODUCT_IMPORT_INPUT_STREAM_PLUGIN);
+    }
+
+    /**
+     * @return \SprykerMiddleware\Zed\Process\Dependency\Plugin\Stream\OutputStreamPluginInterface
+     */
+    public function getProductImportOutputStreamPlugin()
+    {
+        return $this->getProvidedDependency(ProcessDependencyProvider::PRODUCT_IMPORT_OUTPUT_STREAM_PLUGIN);
+    }
+
+    /**
+     * @return \SprykerMiddleware\Zed\Process\Dependency\Plugin\Stream\InputStreamPluginInterface
+     */
+    public function getMapGeneratorInputStreamPlugin()
+    {
+        return $this->getProvidedDependency(ProcessDependencyProvider::MAP_GENERATOR_INPUT_STREAM_PLUGIN);
+    }
+
+    /**
+     * @return \SprykerMiddleware\Zed\Process\Dependency\Plugin\Stream\OutputStreamPluginInterface
+     */
+    public function getMapGeneratorOutputStreamPlugin()
+    {
+        return $this->getProvidedDependency(ProcessDependencyProvider::MAP_GENERATOR_OUTPUT_STREAM_PLUGIN);
+    }
+
+    /**
      * @return \SprykerMiddleware\Zed\Process\Dependency\Plugin\Iterator\ProcessIteratorPluginInterface
      */
     public function getProductImportIteratorPlugin()

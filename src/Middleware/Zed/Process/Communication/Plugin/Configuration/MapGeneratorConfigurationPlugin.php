@@ -6,6 +6,8 @@ use Spryker\Zed\Kernel\Communication\AbstractPlugin;
 use SprykerMiddleware\Zed\Process\Dependency\Plugin\Configuration\ProcessConfigurationPluginInterface;
 use SprykerMiddleware\Zed\Process\Dependency\Plugin\Iterator\ProcessIteratorPluginInterface;
 use SprykerMiddleware\Zed\Process\Dependency\Plugin\Log\MiddlewareLoggerConfigPluginInterface;
+use SprykerMiddleware\Zed\Process\Dependency\Plugin\Stream\InputStreamPluginInterface;
+use SprykerMiddleware\Zed\Process\Dependency\Plugin\Stream\OutputStreamPluginInterface;
 
 /**
  * @method \Middleware\Zed\Process\Business\ProcessFacadeInterface getFacade()
@@ -21,6 +23,22 @@ class MapGeneratorConfigurationPlugin extends AbstractPlugin implements ProcessC
     public function getProcessName(): string
     {
         return static::PROCESS_NAME;
+    }
+
+    /**
+     * @return \SprykerMiddleware\Zed\Process\Dependency\Plugin\Stream\InputStreamPluginInterface
+     */
+    public function getInputStreamPlugin(): InputStreamPluginInterface
+    {
+        return $this->getFactory()->getMapGeneratorInputStreamPlugin();
+    }
+
+    /**
+     * @return \SprykerMiddleware\Zed\Process\Dependency\Plugin\Stream\OutputStreamPluginInterface
+     */
+    public function getOutputStreamPlugin(): OutputStreamPluginInterface
+    {
+        return $this->getFactory()->getMapGeneratorOutputStreamPlugin();
     }
 
     /**
