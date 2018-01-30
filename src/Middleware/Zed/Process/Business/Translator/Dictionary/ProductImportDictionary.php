@@ -36,6 +36,7 @@ class ProductImportDictionary extends AbstractDictionary
                 'MoneyDecimalToInteger',
             ],
             'created' => 'StringToDateTime',
+            'updated' => 'MixedToNull',
             'values.*' => function ($value, $key, $payload) {
                 $result = [];
                 foreach ($value as $element) {

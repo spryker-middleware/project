@@ -9,11 +9,19 @@ use Middleware\Zed\Process\Communication\Plugin\MapGeneratorMapperStagePlugin;
 use Middleware\Zed\Process\Communication\Plugin\MapGeneratorTranslatorStagePlugin;
 use Middleware\Zed\Process\Communication\Plugin\ProductImportMapperStagePlugin;
 use Middleware\Zed\Process\Communication\Plugin\ProductImportTranslatorStagePlugin;
+use Middleware\Zed\Process\Communication\Plugin\TranslatorFunction\MixedToNullTranslatorFunctionPlugin;
 use Spryker\Zed\Kernel\Container;
 use SprykerMiddleware\Zed\Process\Communication\Plugin\Iterator\NullIteratorPlugin;
 use SprykerMiddleware\Zed\Process\Communication\Plugin\JsonReaderStagePlugin;
 use SprykerMiddleware\Zed\Process\Communication\Plugin\JsonWriterStagePlugin;
 use SprykerMiddleware\Zed\Process\Communication\Plugin\Stream\JsonStreamPlugin;
+use SprykerMiddleware\Zed\Process\Communication\Plugin\TranslatorFunction\ArrayToStringTranslatorFunctionPlugin;
+use SprykerMiddleware\Zed\Process\Communication\Plugin\TranslatorFunction\ExcludeKeysAssociativeFilterTranslatorFunctionPlugin;
+use SprykerMiddleware\Zed\Process\Communication\Plugin\TranslatorFunction\MoneyDecimalToIntegerTranslatorFunctionPlugin;
+use SprykerMiddleware\Zed\Process\Communication\Plugin\TranslatorFunction\StringToArrayTranslatoFunctionPlugin;
+use SprykerMiddleware\Zed\Process\Communication\Plugin\TranslatorFunction\StringToDateTimeTranslatorFunctionPlugin;
+use SprykerMiddleware\Zed\Process\Communication\Plugin\TranslatorFunction\StringToFloatTranslatorFunctionPlugin;
+use SprykerMiddleware\Zed\Process\Communication\Plugin\TranslatorFunction\WhitelistKeysAssociativeFilterTranslatorFunctionPlugin;
 use SprykerMiddleware\Zed\Process\ProcessDependencyProvider as SprykerMiddlewareProcessDependencyProvider;
 
 class ProcessDependencyProvider extends SprykerMiddlewareProcessDependencyProvider
@@ -180,6 +188,23 @@ class ProcessDependencyProvider extends SprykerMiddlewareProcessDependencyProvid
             new MapGeneratorMapperStagePlugin(),
             new MapGeneratorTranslatorStagePlugin(),
             new JsonWriterStagePlugin(),
+        ];
+    }
+
+    /**
+     * @return \SprykerMiddleware\Zed\Process\Dependency\Plugin\TranslatorFunction\TranslatorFunctionPluginInterface[]
+     */
+    protected function getTranslatorFunctionsStack()
+    {
+        return [
+            new ArrayToStringTranslatorFunctionPlugin(),
+            new ExcludeKeysAssociativeFilterTranslatorFunctionPlugin(),
+            new MoneyDecimalToIntegerTranslatorFunctionPlugin(),
+            new StringToArrayTranslatoFunctionPlugin(),
+            new StringToDateTimeTranslatorFunctionPlugin(),
+            new StringToFloatTranslatorFunctionPlugin(),
+            new WhitelistKeysAssociativeFilterTranslatorFunctionPlugin(),
+            new MixedToNullTranslatorFunctionPlugin(),
         ];
     }
 }
