@@ -3,6 +3,9 @@
 namespace Middleware\Zed\Process\Business\Translator\Dictionary;
 
 use SprykerMiddleware\Zed\Process\Business\Translator\Dictionary\AbstractDictionary;
+use SprykerMiddleware\Zed\Process\Business\Translator\Dictionary\DictionaryInterface;
+use SprykerMiddleware\Zed\Process\Business\Translator\TranslatorFunction\ArrayToString;
+use SprykerMiddleware\Zed\Process\Business\Translator\TranslatorFunction\StringToArray;
 
 class ProductImportDictionary extends AbstractDictionary
 {
@@ -15,16 +18,16 @@ class ProductImportDictionary extends AbstractDictionary
             'associations' => [
                 [
                     'StringToArray',
-                    'options' => [
-                        'delimiter' => '|',
+                    DictionaryInterface::OPTIONS => [
+                        StringToArray::OPTION_DELIMITER => '|',
                     ],
                 ],
             ],
             'categories' => [
                 [
                     'ArrayToString',
-                    'options' => [
-                        'glue' => '|',
+                    DictionaryInterface::OPTIONS => [
+                        ArrayToString::OPTION_GLUE => '|',
                     ],
                 ],
             ],
