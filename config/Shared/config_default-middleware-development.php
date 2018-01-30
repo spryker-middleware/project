@@ -1,8 +1,6 @@
 <?php
 
 use Middleware\Shared\Process\ProcessConstants;
-use Spryker\Shared\Propel\PropelConstants;
-use Spryker\Shared\PropelOrm\PropelOrmConstants;
 
 // Input file for map generator process
 $config[ProcessConstants::MAP_SOURCE_FILE_PATH] = APPLICATION_ROOT_DIR . '/files/map.json';

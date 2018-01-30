@@ -2,11 +2,11 @@
 
 namespace Middleware\Zed\Process\Business\Mapper\Map;
 
-use Generated\Shared\Transfer\MapperConfigTransfer;
-use SprykerMiddleware\Shared\Process\Config\ProcessConfig;
+use SprykerMiddleware\Shared\Process\ProcessConfig;
+use SprykerMiddleware\Zed\Process\Business\Mapper\Map\AbstractMap;
 use SprykerMiddleware\Zed\Process\Business\Mapper\Map\MapInterface;
 
-class ProductImportMap implements MapInterface
+class ProductImportMap extends AbstractMap
 {
     /**
      * @var string
@@ -21,17 +21,6 @@ class ProductImportMap implements MapInterface
         $this->preGeneratedMapPath = $preGeneratedMapPath;
     }
 
-    /**
-     * @return \Generated\Shared\Transfer\MapperConfigTransfer
-     */
-    public function getMapperConfig(): MapperConfigTransfer
-    {
-        $mapperConfigTransfer = new MapperConfigTransfer();
-        $mapperConfigTransfer->setMap($this->getMap());
-        $mapperConfigTransfer->setStrategy($this->getStrategy());
-        return $mapperConfigTransfer;
-    }
-    
     /**
      * @return array
      */
@@ -54,7 +43,7 @@ class ProductImportMap implements MapInterface
             },
             'values' => [
                 'values',
-                'itemMap' => [
+                MapInterface::ITEM_MAP => [
                     'value' => function (array $item, string $key) {
                         $mappedItem = [];
                         foreach ($item as $element) {
@@ -63,7 +52,7 @@ class ProductImportMap implements MapInterface
                         return $mappedItem;
                     },
                 ],
-                'except' => ['price', 'verschliessbarkeit', 'dach', 'material'],
+                MapInterface::EXCEPT => ['price', 'verschliessbarkeit', 'dach', 'material'],
             ],
             'created' => 'created',
             'associations' => 'associations',

@@ -10,6 +10,8 @@ use SprykerMiddleware\Zed\Process\Communication\Plugin\AbstractTranslatorStagePl
  */
 class ProductImportTranslatorStagePlugin extends AbstractTranslatorStagePlugin
 {
+    const PLUGIN_NAME = 'PRODUCT_IMPORT_TRANSLATOR_STAGE_PLUGIN';
+
     /**
      * @return \Generated\Shared\Transfer\TranslatorConfigTransfer
      */
@@ -17,5 +19,13 @@ class ProductImportTranslatorStagePlugin extends AbstractTranslatorStagePlugin
     {
         return $this->getFacade()
             ->getProductImportTranslatorConfig();
+    }
+
+    /**
+     * @return string
+     */
+    public function getName(): string
+    {
+        return static::PLUGIN_NAME;
     }
 }

@@ -10,7 +10,7 @@ use SprykerMiddleware\Zed\Process\Business\Log\Config\MiddlewareLoggerConfig;
 
 class ProductImportLoggerConfig extends MiddlewareLoggerConfig
 {
-    const NAME = 'ProductImport';
+    const CHANNEL_NAME = 'ProductImport';
 
     /**
      * @return \Monolog\Handler\HandlerInterface[]
@@ -34,7 +34,7 @@ class ProductImportLoggerConfig extends MiddlewareLoggerConfig
             $this->getLogFilePath(),
             $this->loggerSettings->getVerboseLevel()
         );
-        $formatter = new LogstashFormatter(static::NAME);
+        $formatter = new LogstashFormatter(static::CHANNEL_NAME);
         $streamHandler->setFormatter($formatter);
 
         return $streamHandler;

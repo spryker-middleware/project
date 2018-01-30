@@ -9,9 +9,9 @@ use SprykerMiddleware\Zed\Process\Dependency\Plugin\Hook\PostProcessorHookPlugin
  * @method \Middleware\Zed\Process\Business\ProcessFacadeInterface getFacade()
  * @method \Middleware\Zed\Process\Communication\ProcessCommunicationFactory getFactory()
  */
-class DummyPreProcessorHookPlugin extends AbstractPlugin implements PostProcessorHookPluginInterface
+class DummyPostProcessorHookPlugin extends AbstractPlugin implements PostProcessorHookPluginInterface
 {
-    const PLUGIN_NAME = 'DUMMY_PRE_PROCESSOR_HOOK_PLUGIN';
+    const PLUGIN_NAME = 'DUMMY_POST_PROCESSOR_HOOK_PLUGIN';
 
     /**
      * @return void

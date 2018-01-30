@@ -2,21 +2,10 @@
 
 namespace Middleware\Zed\Process\Business\Translator\Dictionary;
 
-use Generated\Shared\Transfer\TranslatorConfigTransfer;
-use SprykerMiddleware\Zed\Process\Business\Translator\Dictionary\DictionaryInterface;
+use SprykerMiddleware\Zed\Process\Business\Translator\Dictionary\AbstractDictionary;
 
-class MapGeneratorDictionary implements DictionaryInterface
+class MapGeneratorDictionary extends AbstractDictionary
 {
-    /**
-     * @return \Generated\Shared\Transfer\TranslatorConfigTransfer
-     */
-    public function getTranslatorConfig(): TranslatorConfigTransfer
-    {
-        $translatorConfigTransfer = new TranslatorConfigTransfer();
-        $translatorConfigTransfer->setDictionary($this->getDictionary());
-        return $translatorConfigTransfer;
-    }
-
     /**
      * @return array
      */

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "e276736683a20731d85801ae1bef82ee",
+    "content-hash": "45b9787d7dfe2191095b8b8ccb717654",
     "packages": [
         {
             "name": "container-interop/container-interop",
@@ -773,16 +773,17 @@
         },
         {
             "name": "spryker-middleware/process",
-            "version": "dev-dev",
+            "version": "dev-feature/clear-configuration",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker-middleware/process.git",
-                "reference": "27a5ca4b150698a4ee1212bff0d885bf3b294591"
+                "reference": "cf2d5f1b6d54a08ed4cd5569aca8128999286bec"
             },
             "require": {
                 "league/pipeline": "^0.3.0",
                 "spryker/console": "^4.0.0",
                 "spryker/development": "^3.0.0",
+                "spryker/log": "^3.0.0",
                 "spryker/transfer": "^3.4.0",
                 "spryker/util-encoding": "^2.0.0"
             },
@@ -796,7 +797,7 @@
                 "MIT"
             ],
             "description": "Process module",
-            "time": "2017-12-22T14:45:05+00:00"
+            "time": "2018-01-04T08:29:12+00:00"
         },
         {
             "name": "spryker/config",
@@ -3533,27 +3534,27 @@
         },
         {
             "name": "symfony/security-acl",
-            "version": "v3.0.0",
+            "version": "v3.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/security-acl.git",
-                "reference": "053b49bf4aa333a392c83296855989bcf88ddad1"
+                "reference": "ab4dfe2d95e038cd367dd04604487b0a3359bcff"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/security-acl/zipball/053b49bf4aa333a392c83296855989bcf88ddad1",
-                "reference": "053b49bf4aa333a392c83296855989bcf88ddad1",
+                "url": "https://api.github.com/repos/symfony/security-acl/zipball/ab4dfe2d95e038cd367dd04604487b0a3359bcff",
+                "reference": "ab4dfe2d95e038cd367dd04604487b0a3359bcff",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.5.9",
-                "symfony/security-core": "~2.8|~3.0"
+                "symfony/security-core": "~2.8|~3.0|~4.0"
             },
             "require-dev": {
                 "doctrine/common": "~2.2",
                 "doctrine/dbal": "~2.2",
                 "psr/log": "~1.0",
-                "symfony/phpunit-bridge": "~2.8|~3.0"
+                "symfony/phpunit-bridge": "~2.8|~3.0|~4.0"
             },
             "suggest": {
                 "doctrine/dbal": "For using the built-in ACL implementation",
@@ -3590,7 +3591,7 @@
             ],
             "description": "Symfony Security Component - ACL (Access Control List)",
             "homepage": "https://symfony.com",
-            "time": "2015-12-28T09:39:46+00:00"
+            "time": "2017-07-21T06:01:18+00:00"
         },
         {
             "name": "symfony/serializer",
