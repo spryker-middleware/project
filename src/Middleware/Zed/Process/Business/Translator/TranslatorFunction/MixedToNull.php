@@ -13,10 +13,11 @@ class MixedToNull extends AbstractTranslatorFunction
 {
     /**
      * @param mixed $value
+     * @param array $payload
      *
      * @return array
      */
-    public function translate($value)
+    public function translate($value, array $payload)
     {
         return null;
     }
