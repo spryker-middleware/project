@@ -11,6 +11,7 @@ use Middleware\Zed\Process\Communication\Plugin\ProductImportMapperStagePlugin;
 use Middleware\Zed\Process\Communication\Plugin\ProductImportTranslatorStagePlugin;
 use Middleware\Zed\Process\Communication\Plugin\TranslatorFunction\MixedToNullTranslatorFunctionPlugin;
 use Spryker\Zed\Kernel\Container;
+use SprykerMiddleware\Zed\Process\Communication\Plugin\Configuration\DefaultConfigurationProfilePlugin;
 use SprykerMiddleware\Zed\Process\Communication\Plugin\Iterator\NullIteratorPlugin;
 use SprykerMiddleware\Zed\Process\Communication\Plugin\JsonReaderStagePlugin;
 use SprykerMiddleware\Zed\Process\Communication\Plugin\JsonWriterStagePlugin;
@@ -53,9 +54,19 @@ class ProcessDependencyProvider extends SprykerMiddlewareProcessDependencyProvid
     }
 
     /**
+     * @return \SprykerMiddleware\Zed\Process\Dependency\Plugin\Configuration\ConfigurationProfilePluginInterface[]
+     */
+    protected function getConfigurationProfilePluginsStack()
+    {
+        return [
+            new DefaultConfigurationProfilePlugin(),
+        ];
+    }
+
+    /**
      * @return \SprykerMiddleware\Zed\Process\Dependency\Plugin\Configuration\ProcessConfigurationPluginInterface[]
      */
-    protected function getProcessesPluginsStack()
+    protected function getDefaultProcessesPluginsStack()
     {
         return [
             new ProductImportConfigurationPlugin(),
