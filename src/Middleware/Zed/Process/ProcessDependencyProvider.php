@@ -44,7 +44,7 @@ class ProcessDependencyProvider extends SprykerMiddlewareProcessDependencyProvid
      *
      * @return \Spryker\Zed\Kernel\Container
      */
-    public function provideCommunicationLayerDependencies(Container $container)
+    public function provideCommunicationLayerDependencies(Container $container): Container
     {
         $container = parent::provideCommunicationLayerDependencies($container);
         $this->addProductImportProcessPlugins($container);
@@ -56,7 +56,7 @@ class ProcessDependencyProvider extends SprykerMiddlewareProcessDependencyProvid
     /**
      * @return \SprykerMiddleware\Zed\Process\Dependency\Plugin\Configuration\ConfigurationProfilePluginInterface[]
      */
-    protected function getConfigurationProfilePluginsStack()
+    protected function getConfigurationProfilePluginsStack(): array
     {
         return [
             new DefaultConfigurationProfilePlugin(),
@@ -66,7 +66,7 @@ class ProcessDependencyProvider extends SprykerMiddlewareProcessDependencyProvid
     /**
      * @return \SprykerMiddleware\Zed\Process\Dependency\Plugin\Configuration\ProcessConfigurationPluginInterface[]
      */
-    protected function getDefaultProcessesPluginsStack()
+    protected function getDefaultProcessesPluginsStack(): array
     {
         return [
             new ProductImportConfigurationPlugin(),
@@ -205,17 +205,11 @@ class ProcessDependencyProvider extends SprykerMiddlewareProcessDependencyProvid
     /**
      * @return \SprykerMiddleware\Zed\Process\Dependency\Plugin\TranslatorFunction\TranslatorFunctionPluginInterface[]
      */
-    protected function getTranslatorFunctionsStack()
+    protected function getGenericTranslatorFunctionsStack(): array
     {
-        return [
-            new ArrayToStringTranslatorFunctionPlugin(),
-            new ExcludeKeysAssociativeFilterTranslatorFunctionPlugin(),
-            new MoneyDecimalToIntegerTranslatorFunctionPlugin(),
-            new StringToArrayTranslatoFunctionPlugin(),
-            new StringToDateTimeTranslatorFunctionPlugin(),
-            new StringToFloatTranslatorFunctionPlugin(),
-            new WhitelistKeysAssociativeFilterTranslatorFunctionPlugin(),
-            new MixedToNullTranslatorFunctionPlugin(),
-        ];
+        $pluginsStack = parent::getGenericTranslatorFunctionsStack();
+        $pluginsStack[] = new MixedToNullTranslatorFunctionPlugin();
+
+        return $pluginsStack;
     }
 }

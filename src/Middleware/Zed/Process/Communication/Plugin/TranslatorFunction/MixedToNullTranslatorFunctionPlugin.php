@@ -8,16 +8,16 @@
 namespace Middleware\Zed\Process\Communication\Plugin\TranslatorFunction;
 
 use Middleware\Zed\Process\Business\Translator\TranslatorFunction\MixedToNull;
-use SprykerMiddleware\Zed\Process\Communication\Plugin\TranslatorFunction\AbstractTranslatorFunctionPlugin;
+use SprykerMiddleware\Zed\Process\Communication\Plugin\TranslatorFunction\AbstractGenericTranslatorFunctionPlugin;
 
-class MixedToNullTranslatorFunctionPlugin extends AbstractTranslatorFunctionPlugin
+class MixedToNullTranslatorFunctionPlugin extends AbstractGenericTranslatorFunctionPlugin
 {
     const NAME = 'MixedToNull';
 
     /**
      * @return string
      */
-    public function getName()
+    public function getName(): string
     {
         return static::NAME;
     }
@@ -25,7 +25,7 @@ class MixedToNullTranslatorFunctionPlugin extends AbstractTranslatorFunctionPlug
     /**
      * @return string
      */
-    public function getTranslatorFunctionClassName()
+    public function getTranslatorFunctionClassName(): string
     {
         return MixedToNull::class;
     }
