@@ -5,7 +5,7 @@
     "license": "MIT",
     "require": {
         "php": ">=7.1",
-        "spryker-middleware/process": "dev-beta/middleware-process"
+        "spryker-middleware/process": "dev-feature/SM-8-validators"
     },
     "require-dev": {
         "php-mock/php-mock": "^1.0",
@@ -14,7 +14,8 @@
         "phpunit/phpunit": "^5.0",
         "spryker/architecture-sniffer": "dev-master",
         "spryker/code-sniffer": "*",
-        "spryker/code-generator": "*"
+        "spryker/code-generator": "*",
+        "codeception/codeception": "^2.3.5"
     },
     "autoload": {
         "psr-4": {

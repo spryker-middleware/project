@@ -4,6 +4,7 @@ namespace Middleware\Zed\Process\Business;
 
 use Generated\Shared\Transfer\MapperConfigTransfer;
 use Generated\Shared\Transfer\TranslatorConfigTransfer;
+use Generated\Shared\Transfer\ValidatorConfigTransfer;
 use SprykerMiddleware\Zed\Process\Business\ProcessFacade as SprykerMiddlewareProcessFacade;
 
 /**
@@ -49,5 +50,15 @@ class ProcessFacade extends SprykerMiddlewareProcessFacade implements ProcessFac
         return $this->getFactory()
             ->createMapGeneratorDictionary()
             ->getTranslatorConfig();
+    }
+
+    /**
+     * @return \Generated\Shared\Transfer\ValidatorConfigTransfer
+     */
+    public function getProductImportValidatorConfig(): ValidatorConfigTransfer
+    {
+        return $this->getFactory()
+            ->createProductImportValidationRuleSet()
+            ->getValidatorConfig();
     }
 }

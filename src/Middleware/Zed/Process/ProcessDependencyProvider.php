@@ -9,6 +9,7 @@ use Middleware\Zed\Process\Communication\Plugin\MapGeneratorMapperStagePlugin;
 use Middleware\Zed\Process\Communication\Plugin\MapGeneratorTranslatorStagePlugin;
 use Middleware\Zed\Process\Communication\Plugin\ProductImportMapperStagePlugin;
 use Middleware\Zed\Process\Communication\Plugin\ProductImportTranslatorStagePlugin;
+use Middleware\Zed\Process\Communication\Plugin\ProductImportValidatorStagePlugin;
 use Middleware\Zed\Process\Communication\Plugin\TranslatorFunction\MixedToNullTranslatorFunctionPlugin;
 use Spryker\Zed\Kernel\Container;
 use SprykerMiddleware\Zed\Process\Communication\Plugin\Configuration\DefaultConfigurationProfilePlugin;
@@ -183,6 +184,7 @@ class ProcessDependencyProvider extends SprykerMiddlewareProcessDependencyProvid
     {
         return [
             new JsonReaderStagePlugin(),
+            new ProductImportValidatorStagePlugin(),
             new ProductImportMapperStagePlugin(),
             new ProductImportTranslatorStagePlugin(),
             new JsonWriterStagePlugin(),
