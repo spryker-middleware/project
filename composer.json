@@ -5,13 +5,10 @@
     "license": "MIT",
     "require": {
         "league/pipeline": "^0.3.0",
-        "spryker/console": "^3.0.0",
-        "spryker/development": "^3.0.0"
+        "spryker/console": "^3.0.0"
     },
     "require-dev": {
-        "php-mock/php-mock": "^1.0",
-        "phploc/phploc": "^3.0.1",
-        "phpmd/phpmd": "~2.4.3",
+        "spryker/development": "^3.0.0",
         "phpunit/phpunit": "^5.0",
         "spryker/architecture-sniffer": "^0.3.0",
         "spryker/code-sniffer": "*"
