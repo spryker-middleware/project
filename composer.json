@@ -25,15 +25,5 @@
     "prefer-stable": true,
     "config": {
         "process-timeout": 600
-    },
-    "repositories": [
-        {
-            "type": "composer",
-            "url": "https://code.spryker.com/repo/private"
-        },
-        {
-            "type": "git",
-            "url": "git@github.com:spryker/architecture-sniffer.git"
-        }
-    ]
+    }
 }
