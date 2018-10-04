@@ -2,7 +2,7 @@
     "name": "spryker-middleware/project",
     "description": "Spryker Middleware",
     "type": "project",
-    "license": "MIT",
+    "license": "proprietary",
     "require": {
         "league/pipeline": "^0.3.0",
         "spryker/console": "^3.0.0"
@@ -10,8 +10,14 @@
     "require-dev": {
         "spryker/development": "^3.0.0",
         "phpunit/phpunit": "^5.0",
-        "spryker/architecture-sniffer": "^0.3.0",
-        "spryker/code-sniffer": "*"
+        "spryker/architecture-sniffer": "*",
+        "spryker/code-sniffer": "*",
+        "spryker/calculation": "*",
+        "spryker/cart": "*",
+        "spryker/propel": "*",
+        "spryker/silex": "*",
+        "spryker/testify": "*",
+        "spryker/transfer": "*"
     },
     "autoload": {
         "psr-0": {
@@ -21,6 +27,12 @@
     "minimum-stability": "dev",
     "prefer-stable": true,
     "config": {
+        "preferred-install": "dist",
+        "sort-packages": true,
         "process-timeout": 600
+    },
+    "scripts": {
+        "cs-check": "phpcs --standard=vendor/spryker/code-sniffer/Spryker/ruleset.xml -v src/",
+        "cs-fix": "phpcbf --standard=vendor/spryker/code-sniffer/Spryker/ruleset.xml -v src/"
     }
 }
