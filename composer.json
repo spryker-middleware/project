@@ -2,44 +2,37 @@
     "name": "spryker-middleware/project",
     "description": "Spryker Middleware",
     "type": "project",
-    "license": "MIT",
+    "license": "proprietary",
     "require": {
-        "php": ">=7.1",
-        "spryker-middleware/process": "dev-dev"
+        "spryker/console": "^3.0.0",
+        "spryker-middleware/process": "^1.0.0"
     },
     "require-dev": {
-        "php-mock/php-mock": "^1.0",
-        "phploc/phploc": "^3.0.1",
-        "phpmd/phpmd": "~2.4.3",
+        "spryker/development": "^3.0.0",
         "phpunit/phpunit": "^5.0",
-        "spryker/architecture-sniffer": "dev-master",
+        "spryker/architecture-sniffer": "*",
         "spryker/code-sniffer": "*",
-        "spryker/code-generator": "*",
-        "codeception/codeception": "^2.3.5"
+        "spryker/calculation": "*",
+        "spryker/cart": "*",
+        "spryker/propel": "*",
+        "spryker/silex": "*",
+        "spryker/testify": "*",
+        "spryker/transfer": "*"
     },
     "autoload": {
-        "psr-4": {
-            "Middleware\\": "src/Middleware/",
-            "Generated\\": "src/Generated/"
+        "psr-0": {
+            "": "src"
         }
     },
     "minimum-stability": "dev",
     "prefer-stable": true,
     "config": {
+        "preferred-install": "dist",
+        "sort-packages": true,
         "process-timeout": 600
     },
-    "repositories": [
-        {
-            "type": "composer",
-            "url": "https://code.spryker.com/repo/private"
-        },
-        {
-            "type": "git",
-            "url": "git@github.com:spryker/architecture-sniffer.git"
-        },
-        {
-            "type": "git",
-            "url": "git@github.com:spryker-middleware/process.git"
-        }
-    ]
+    "scripts": {
+        "cs-check": "phpcs --standard=vendor/spryker/code-sniffer/Spryker/ruleset.xml -v src/",
+        "cs-fix": "phpcbf --standard=vendor/spryker/code-sniffer/Spryker/ruleset.xml -v src/"
+    }
 }
