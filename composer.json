@@ -4,8 +4,8 @@
     "type": "project",
     "license": "proprietary",
     "require": {
-        "spryker/console": "^3.0.0",
-        "spryker-middleware/process": "^1.0.0"
+        "spryker-middleware/process": "^1.0.0",
+        "spryker/console": "^4.0.0"
     },
     "require-dev": {
         "spryker/development": "^3.0.0",
