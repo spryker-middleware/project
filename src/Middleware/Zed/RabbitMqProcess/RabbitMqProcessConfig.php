@@ -21,7 +21,7 @@ class RabbitMqProcessConfig extends AbstractBundleConfig
 
         $rabbitMqReceiveOptionTransfer->setConsumerExclusive(false);
         $rabbitMqReceiveOptionTransfer->setNoWait(false);
-        $rabbitMqReceiveOptionTransfer->setNoAck(false); /* it prevents the queue to delete the message until we send the `acknowledging` */
+        $rabbitMqReceiveOptionTransfer->setNoAck(false);
 
         return [
             'rabbitmq' => $rabbitMqReceiveOptionTransfer,
