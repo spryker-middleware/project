@@ -7,7 +7,6 @@
 
 namespace Middleware\Client\Queue;
 
-
 use Spryker\Client\Kernel\Container;
 use Spryker\Client\Queue\QueueDependencyProvider as SprykerQueueDependencyProvider;
 

@@ -8,6 +8,7 @@
 namespace Middleware\Zed\RabbitMqProcess;
 
 use Generated\Shared\Transfer\RabbitMqConsumerOptionTransfer;
+use Middleware\Shared\RabbitMqProcess\RabbitMqProcessConstants;
 use Spryker\Zed\Kernel\AbstractBundleConfig;
 
 class RabbitMqProcessConfig extends AbstractBundleConfig
@@ -33,7 +34,7 @@ class RabbitMqProcessConfig extends AbstractBundleConfig
      */
     public function getQueueName(): string
     {
-        return 'middleware';
+        return $this->get(RabbitMqProcessConstants::MIDDLEWARE_QUEUE_NAME);
     }
 
     /**

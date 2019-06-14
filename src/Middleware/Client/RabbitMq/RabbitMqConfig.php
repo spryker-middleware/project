@@ -7,16 +7,14 @@
 
 namespace Middleware\Client\RabbitMq;
 
-
 use ArrayObject;
 use Generated\Shared\Transfer\RabbitMqOptionTransfer;
+use Middleware\Shared\RabbitMq\RabbitMqConstants;
 use Spryker\Client\RabbitMq\Model\Connection\Connection;
 use Spryker\Client\RabbitMq\RabbitMqConfig as SprykerRabbitMqConfig;
 
 class RabbitMqConfig extends SprykerRabbitMqConfig
 {
-    protected const MIDDLEWARE_QUEUE = 'middleware';
-    protected const MIDDLEWARE_ERROR_QUEUE = 'middleware.error';
     /**
      * @return \ArrayObject
      */
@@ -26,8 +24,8 @@ class RabbitMqConfig extends SprykerRabbitMqConfig
 
         $queueOptionCollection->append(
             $this->createQueueOption(
-                static::MIDDLEWARE_QUEUE,
-                static::MIDDLEWARE_ERROR_QUEUE
+                $this->getMiddlewareQueueName(),
+                $this->getMiddlewareErrorQueueName()
             )
         );
 
@@ -86,5 +84,21 @@ class RabbitMqConfig extends SprykerRabbitMqConfig
             ->addRoutingKey($routingKey);
 
         return $queueOptionTransfer;
+    }
+
+    /**
+     * @return string
+     */
+    protected function getMiddlewareQueueName(): string
+    {
+        return $this->get(RabbitMqConstants::MIDDLEWARE_QUEUE_NAME);
+    }
+
+    /**
+     * @return string
+     */
+    protected function getMiddlewareErrorQueueName(): string
+    {
+        return $this->get(RabbitMqConstants::MIDDLEWARE_ERROR_QUEUE_NAME);
     }
 }

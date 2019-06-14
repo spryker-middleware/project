@@ -1,5 +1,7 @@
 <?php
 
+use Middleware\Shared\RabbitMq\RabbitMqConstants;
+use Middleware\Shared\RabbitMqProcess\RabbitMqProcessConstants;
 use Monolog\Logger;
 use Spryker\Client\RabbitMq\Model\RabbitMqAdapter;
 use Spryker\Shared\ErrorHandler\ErrorHandlerConstants;
@@ -105,3 +107,8 @@ $config[RabbitMqEnv::RABBITMQ_CONNECTIONS] = [
         RabbitMqEnv::RABBITMQ_DEFAULT_CONNECTION => true,
     ],
 ];
+
+$config[RabbitMqProcessConstants::MIDDLEWARE_QUEUE_NAME] =
+    $config[RabbitMqConstants::MIDDLEWARE_QUEUE_NAME] = 'middleware';
+
+$config[RabbitMqConstants::MIDDLEWARE_ERROR_QUEUE_NAME] = 'middleware.error';
