@@ -15,10 +15,10 @@ use SprykerMiddleware\Zed\Process\Dependency\Plugin\StagePluginInterface;
 
 /**
  * @method \Middleware\Zed\Process\Business\ProcessFacadeInterface getFacade()
+ * @method \Middleware\Zed\Process\Communication\ProcessCommunicationFactory getFactory()
  */
 class ProductImportValidatorStagePlugin extends AbstractPlugin implements StagePluginInterface
 {
-
     /**
      * @param mixed $payload
      * @param \SprykerMiddleware\Shared\Process\Stream\ReadStreamInterface $inStream
