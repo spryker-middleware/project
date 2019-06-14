@@ -7,6 +7,7 @@
 
 namespace Middleware\Zed\Console;
 
+use Middleware\Zed\RabbitMqProcess\Communication\Console\RabbitMqProcessMessagePublisherConsole;
 use Spryker\Shared\Config\Environment;
 use Spryker\Zed\Console\ConsoleDependencyProvider as SprykerDependencyProvider;
 use Spryker\Zed\Development\Communication\Console\CodeArchitectureSnifferConsole;
@@ -37,6 +38,8 @@ class ConsoleDependencyProvider extends SprykerDependencyProvider
         $commands = [];
         $commands[] = new GeneratorConsole();
         $commands[] = new ProcessConsole();
+        $commands[] = new RabbitMqProcessMessagePublisherConsole();
+
         if (Environment::getEnvironment() === static::DEV_ENVIRONMENT) {
             $commands[] = new CodeTestConsole();
             $commands[] = new CodeStyleSnifferConsole();
