@@ -8,6 +8,7 @@
 namespace Middleware\Zed\Process;
 
 use Middleware\Zed\RabbitMqProcess\Communication\Plugin\ProcessConfiguration\RabbitMqProcessConfigurationPlugin;
+use SprykerEco\Zed\AkeneoPimMiddlewareConnector\Communication\Plugin\Configuration\SuperAttributeImportConfigurationPlugin;
 use SprykerMiddleware\Zed\Process\Communication\Plugin\Configuration\DefaultConfigurationProfilePlugin;
 use SprykerMiddleware\Zed\Process\ProcessDependencyProvider as SprykerMiddlewareProcessDependencyProvider;
 
@@ -30,6 +31,7 @@ class ProcessDependencyProvider extends SprykerMiddlewareProcessDependencyProvid
     {
         return [
             new RabbitMqProcessConfigurationPlugin(),
+            new SuperAttributeImportConfigurationPlugin(),
         ];
     }
 }
