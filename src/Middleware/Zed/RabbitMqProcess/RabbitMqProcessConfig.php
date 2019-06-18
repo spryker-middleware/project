@@ -42,7 +42,7 @@ class RabbitMqProcessConfig extends AbstractBundleConfig
      */
     public function getBulkSize(): int
     {
-        return 100;
+        return 5;
     }
 
     /**
@@ -58,7 +58,7 @@ class RabbitMqProcessConfig extends AbstractBundleConfig
      */
     public function getMaxRetryAmount(): int
     {
-        return 60;
+        return 10;
     }
 
     /**

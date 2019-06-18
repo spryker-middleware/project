@@ -49,7 +49,13 @@ class RabbitMqProcessReadStream implements ReadStreamInterface
      */
     public function read(): array
     {
-        return json_decode($this->messages[$this->position++]->getQueueMessage()->getBody());
+        $this->position++;
+
+        if ($this->eof()) {
+            $this->messages = array_merge($this->messages, $this->readMessages());
+        }
+
+        return json_decode($this->messages[$this->position]->getQueueMessage()->getBody());
     }
 
     /**
@@ -57,15 +63,7 @@ class RabbitMqProcessReadStream implements ReadStreamInterface
      */
     public function open(): bool
     {
-        $retryAmount = 0;
-        do {
-            $this->messages = $this->messageManager->readMessages();
-            if ($retryAmount > 0) {
-                sleep($this->config->getRetryDelayInterval());
-            }
-            $retryAmount++;
-        } while (empty($this->messages) && ($retryAmount <= $this->config->getMaxRetryAmount()));
-
+        $this->messages = $this->readMessages();
         $this->position = 0;
 
         return true;
@@ -98,5 +96,19 @@ class RabbitMqProcessReadStream implements ReadStreamInterface
     public function eof(): bool
     {
         return $this->position >= count($this->messages);
+    }
+
+    protected function readMessages(): array
+    {
+        $retryAmount = 0;
+        do {
+            $messages = $this->messageManager->readMessages();
+            if ($retryAmount > 0) {
+                sleep($this->config->getRetryDelayInterval());
+            }
+            $retryAmount++;
+        } while (empty($messages) && ($retryAmount <= $this->config->getMaxRetryAmount()));
+
+        return $messages;
     }
 }
