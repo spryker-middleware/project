@@ -49,13 +49,13 @@ class RabbitMqProcessReadStream implements ReadStreamInterface
      */
     public function read(): array
     {
-        $this->position++;
+        $messageBody = json_decode($this->messages[$this->position++]->getQueueMessage()->getBody());
 
         if ($this->eof()) {
             $this->messages = array_merge($this->messages, $this->readMessages());
         }
 
-        return json_decode($this->messages[$this->position]->getQueueMessage()->getBody());
+        return $messageBody;
     }
 
     /**
