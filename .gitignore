@@ -71,3 +71,6 @@ c3.php
 # demo data generator
 /src/DemoDataGenerator/vendor/
 
+# files
+/files/output/*
+

@@ -23,7 +23,7 @@ class ProductImportValidationRuleSet extends AbstractValidationRuleSet
                 [
                     'Regex',
                     'options' => [
-                        'pattern' => '/^\d{6}$/'
+                        'pattern' => '/^\d{6}$/',
                     ],
                 ],
             ],
