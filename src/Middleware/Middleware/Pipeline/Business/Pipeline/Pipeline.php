@@ -59,7 +59,7 @@ class Pipeline implements PipelineInterface
     }
 
     /**
-     * @inheritdoc
+     * @inheritDoc
      */
     public function __invoke($payload)
     {

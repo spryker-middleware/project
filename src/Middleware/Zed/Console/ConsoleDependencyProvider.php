@@ -16,7 +16,7 @@ use Spryker\Zed\Kernel\Container;
 
 class ConsoleDependencyProvider extends SprykerDependencyProvider
 {
-    const DEV_ENVIRONMENT = 'middleware-development';
+    public const DEV_ENVIRONMENT = 'middleware-development';
 
     /**
      * @param \Spryker\Zed\Kernel\Container $container
@@ -31,6 +31,7 @@ class ConsoleDependencyProvider extends SprykerDependencyProvider
             $commands[] = new CodeStyleSnifferConsole();
             $commands[] = new CodePhpMessDetectorConsole();
         }
+
         return $commands;
     }
 }

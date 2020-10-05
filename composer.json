@@ -1,10 +1,11 @@
 {
     "name": "spryker-middleware/project",
-    "description": "Spryker Middleware",
+    "description": "Spryker Middleware Project",
     "type": "project",
     "license": "proprietary",
     "require": {
-        "spryker/console": "^3.0.0",
+        "php": ">=7.2",
+        "spryker/console": "^4.0.0",
         "spryker-middleware/process": "^1.0.0"
     },
     "require-dev": {
@@ -20,8 +21,8 @@
         "spryker/transfer": "*"
     },
     "autoload": {
-        "psr-0": {
-            "": "src"
+        "psr-4": {
+            "Middleware\\": "src/"
         }
     },
     "minimum-stability": "dev",
@@ -32,7 +33,7 @@
         "process-timeout": 600
     },
     "scripts": {
-        "cs-check": "phpcs --standard=vendor/spryker/code-sniffer/Spryker/ruleset.xml -v src/",
-        "cs-fix": "phpcbf --standard=vendor/spryker/code-sniffer/Spryker/ruleset.xml -v src/"
+        "cs-check": "phpcs --standard=vendor/spryker/code-sniffer/Spryker/ruleset.xml -p src/",
+        "cs-fix": "phpcbf --standard=vendor/spryker/code-sniffer/Spryker/ruleset.xml -p src/"
     }
 }

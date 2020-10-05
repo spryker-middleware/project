@@ -25,7 +25,7 @@ class Stage implements StageInterface
     }
 
     /**
-     * @inheritdoc
+     * @inheritDoc
      */
     public function __invoke($payload)
     {
