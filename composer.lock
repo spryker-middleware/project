@@ -230,6 +230,7 @@
                 "faker",
                 "fixtures"
             ],
+            "abandoned": true,
             "time": "2019-12-12T13:22:17+00:00"
         },
         {
@@ -1179,9 +1180,9 @@
             "autoload": {
                 "psr-4": {
                     "Spryker\\": "src/Spryker/",
-                    "SprykerTest\\Shared\\Application\\Helper\\": "tests/SprykerTest/Shared/Application/_support/Helper/",
+                    "SprykerTest\\Zed\\Application\\Helper\\": "tests/SprykerTest/Zed/Application/_support/Helper/",
                     "SprykerTest\\Yves\\Application\\Helper\\": "tests/SprykerTest/Yves/Application/_support/Helper/",
-                    "SprykerTest\\Zed\\Application\\Helper\\": "tests/SprykerTest/Zed/Application/_support/Helper/"
+                    "SprykerTest\\Shared\\Application\\Helper\\": "tests/SprykerTest/Shared/Application/_support/Helper/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -1377,12 +1378,12 @@
                 }
             },
             "autoload": {
+                "psr-0": {
+                    "Pimple": "src/Spryker"
+                },
                 "psr-4": {
                     "Spryker\\": "src/Spryker/",
                     "SprykerTest\\Service\\Container\\Helper\\": "tests/SprykerTest/Service/Container/_support/Helper/"
-                },
-                "psr-0": {
-                    "Pimple": "src/Spryker"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -1477,13 +1478,13 @@
                 }
             },
             "autoload": {
+                "files": [
+                    "tests/dd.php"
+                ],
                 "psr-4": {
                     "Spryker\\": "src/Spryker/",
                     "SprykerTest\\Zed\\Development\\Helper\\": "tests/SprykerTest/Zed/Development/_support/Helper/"
-                },
-                "files": [
-                    "tests/dd.php"
-                ]
+                }
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
@@ -1849,8 +1850,8 @@
             "autoload": {
                 "psr-4": {
                     "Spryker\\": "src/Spryker/",
-                    "SprykerTest\\Shared\\Kernel\\Helper\\": "tests/SprykerTest/Shared/Kernel/_support/Helper/",
-                    "SprykerTest\\Zed\\Kernel\\Helper\\": "tests/SprykerTest/Zed/Kernel/_support/Helper/"
+                    "SprykerTest\\Zed\\Kernel\\Helper\\": "tests/SprykerTest/Zed/Kernel/_support/Helper/",
+                    "SprykerTest\\Shared\\Kernel\\Helper\\": "tests/SprykerTest/Shared/Kernel/_support/Helper/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -1908,8 +1909,8 @@
             "autoload": {
                 "psr-4": {
                     "Spryker\\": "src/Spryker/",
-                    "SprykerTest\\Yves\\Locale\\Helper\\": "tests/SprykerTest/Yves/Locale/_support/Helper/",
-                    "SprykerTest\\Zed\\Locale\\Helper\\": "tests/SprykerTest/Zed/Locale/_support/Helper/"
+                    "SprykerTest\\Zed\\Locale\\Helper\\": "tests/SprykerTest/Zed/Locale/_support/Helper/",
+                    "SprykerTest\\Yves\\Locale\\Helper\\": "tests/SprykerTest/Yves/Locale/_support/Helper/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -2944,6 +2945,7 @@
                 "proprietary"
             ],
             "description": "Zend module",
+            "abandoned": true,
             "time": "2017-08-02T16:31:17+00:00"
         },
         {
@@ -4096,6 +4098,7 @@
                     "type": "tidelift"
                 }
             ],
+            "abandoned": "EnglishInflector from the String component",
             "time": "2020-05-20T17:43:50+00:00"
         },
         {
@@ -4334,20 +4337,23 @@
         },
         {
             "name": "symfony/polyfill-ctype",
-            "version": "v1.18.1",
+            "version": "v1.24.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-ctype.git",
-                "reference": "1c302646f6efc070cd46856e600e5e0684d6b454"
+                "reference": "30885182c981ab175d4d034db0f6f469898070ab"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-ctype/zipball/1c302646f6efc070cd46856e600e5e0684d6b454",
-                "reference": "1c302646f6efc070cd46856e600e5e0684d6b454",
+                "url": "https://api.github.com/repos/symfony/polyfill-ctype/zipball/30885182c981ab175d4d034db0f6f469898070ab",
+                "reference": "30885182c981ab175d4d034db0f6f469898070ab",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.3.3"
+                "php": ">=7.1"
+            },
+            "provide": {
+                "ext-ctype": "*"
             },
             "suggest": {
                 "ext-ctype": "For best performance"
@@ -4355,7 +4361,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.18-dev"
+                    "dev-main": "1.23-dev"
                 },
                 "thanks": {
                     "name": "symfony/polyfill",
@@ -4406,7 +4412,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2020-07-14T12:35:20+00:00"
+            "time": "2021-10-20T20:35:02+00:00"
         },
         {
             "name": "symfony/polyfill-iconv",
@@ -4439,12 +4445,12 @@
                 }
             },
             "autoload": {
-                "psr-4": {
-                    "Symfony\\Polyfill\\Iconv\\": ""
-                },
                 "files": [
                     "bootstrap.php"
-                ]
+                ],
+                "psr-4": {
+                    "Symfony\\Polyfill\\Iconv\\": ""
+                }
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
@@ -4516,12 +4522,12 @@
                 }
             },
             "autoload": {
-                "psr-4": {
-                    "Symfony\\Polyfill\\Intl\\Grapheme\\": ""
-                },
                 "files": [
                     "bootstrap.php"
-                ]
+                ],
+                "psr-4": {
+                    "Symfony\\Polyfill\\Intl\\Grapheme\\": ""
+                }
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
@@ -4673,12 +4679,12 @@
                 }
             },
             "autoload": {
-                "psr-4": {
-                    "Symfony\\Polyfill\\Intl\\Idn\\": ""
-                },
                 "files": [
                     "bootstrap.php"
-                ]
+                ],
+                "psr-4": {
+                    "Symfony\\Polyfill\\Intl\\Idn\\": ""
+                }
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
@@ -4755,12 +4761,12 @@
                 }
             },
             "autoload": {
-                "psr-4": {
-                    "Symfony\\Polyfill\\Intl\\Normalizer\\": ""
-                },
                 "files": [
                     "bootstrap.php"
                 ],
+                "psr-4": {
+                    "Symfony\\Polyfill\\Intl\\Normalizer\\": ""
+                },
                 "classmap": [
                     "Resources/stubs"
                 ]
@@ -4807,20 +4813,23 @@
         },
         {
             "name": "symfony/polyfill-mbstring",
-            "version": "v1.18.1",
+            "version": "v1.24.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-mbstring.git",
-                "reference": "a6977d63bf9a0ad4c65cd352709e230876f9904a"
+                "reference": "0abb51d2f102e00a4eefcf46ba7fec406d245825"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-mbstring/zipball/a6977d63bf9a0ad4c65cd352709e230876f9904a",
-                "reference": "a6977d63bf9a0ad4c65cd352709e230876f9904a",
+                "url": "https://api.github.com/repos/symfony/polyfill-mbstring/zipball/0abb51d2f102e00a4eefcf46ba7fec406d245825",
+                "reference": "0abb51d2f102e00a4eefcf46ba7fec406d245825",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.3.3"
+                "php": ">=7.1"
+            },
+            "provide": {
+                "ext-mbstring": "*"
             },
             "suggest": {
                 "ext-mbstring": "For best performance"
@@ -4828,7 +4837,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.18-dev"
+                    "dev-main": "1.23-dev"
                 },
                 "thanks": {
                     "name": "symfony/polyfill",
@@ -4880,7 +4889,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2020-07-14T12:35:20+00:00"
+            "time": "2021-11-30T18:21:41+00:00"
         },
         {
             "name": "symfony/polyfill-php70",
@@ -4987,12 +4996,12 @@
                 }
             },
             "autoload": {
-                "psr-4": {
-                    "Symfony\\Polyfill\\Php72\\": ""
-                },
                 "files": [
                     "bootstrap.php"
-                ]
+                ],
+                "psr-4": {
+                    "Symfony\\Polyfill\\Php72\\": ""
+                }
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
@@ -5060,12 +5069,12 @@
                 }
             },
             "autoload": {
-                "psr-4": {
-                    "Symfony\\Polyfill\\Php73\\": ""
-                },
                 "files": [
                     "bootstrap.php"
                 ],
+                "psr-4": {
+                    "Symfony\\Polyfill\\Php73\\": ""
+                },
                 "classmap": [
                     "Resources/stubs"
                 ]
@@ -5136,12 +5145,12 @@
                 }
             },
             "autoload": {
-                "psr-4": {
-                    "Symfony\\Polyfill\\Php80\\": ""
-                },
                 "files": [
                     "bootstrap.php"
                 ],
+                "psr-4": {
+                    "Symfony\\Polyfill\\Php80\\": ""
+                },
                 "classmap": [
                     "Resources/stubs"
                 ]
@@ -6397,16 +6406,16 @@
         },
         {
             "name": "twig/twig",
-            "version": "v3.0.5",
+            "version": "v3.3.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/twigphp/Twig.git",
-                "reference": "9b76b1535483cdf4edf01bb787b0217b62bd68a5"
+                "reference": "972d8604a92b7054828b539f2febb0211dd5945c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/twigphp/Twig/zipball/9b76b1535483cdf4edf01bb787b0217b62bd68a5",
-                "reference": "9b76b1535483cdf4edf01bb787b0217b62bd68a5",
+                "url": "https://api.github.com/repos/twigphp/Twig/zipball/972d8604a92b7054828b539f2febb0211dd5945c",
+                "reference": "972d8604a92b7054828b539f2febb0211dd5945c",
                 "shasum": ""
             },
             "require": {
@@ -6416,12 +6425,12 @@
             },
             "require-dev": {
                 "psr/container": "^1.0",
-                "symfony/phpunit-bridge": "^4.4.9|^5.0.9"
+                "symfony/phpunit-bridge": "^4.4.9|^5.0.9|^6.0"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "3.0-dev"
+                    "dev-master": "3.3-dev"
                 }
             },
             "autoload": {
@@ -6465,7 +6474,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2020-08-05T15:13:19+00:00"
+            "time": "2022-02-04T06:59:48+00:00"
         },
         {
             "name": "voku/anti-xss",
@@ -6652,12 +6661,12 @@
             },
             "type": "library",
             "autoload": {
-                "psr-4": {
-                    "voku\\": "src/voku/"
-                },
                 "files": [
                     "bootstrap.php"
-                ]
+                ],
+                "psr-4": {
+                    "voku\\": "src/voku/"
+                }
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
@@ -6716,12 +6725,12 @@
             "version": "1.9.1",
             "source": {
                 "type": "git",
-                "url": "https://github.com/webmozart/assert.git",
+                "url": "https://github.com/webmozarts/assert.git",
                 "reference": "bafc69caeb4d49c39fd0779086c03a3738cbb389"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/webmozart/assert/zipball/bafc69caeb4d49c39fd0779086c03a3738cbb389",
+                "url": "https://api.github.com/repos/webmozarts/assert/zipball/bafc69caeb4d49c39fd0779086c03a3738cbb389",
                 "reference": "bafc69caeb4d49c39fd0779086c03a3738cbb389",
                 "shasum": ""
             },
@@ -6765,12 +6774,12 @@
             "version": "4.1.0",
             "source": {
                 "type": "git",
-                "url": "https://github.com/webmozart/glob.git",
+                "url": "https://github.com/webmozarts/glob.git",
                 "reference": "3cbf63d4973cf9d780b93d2da8eec7e4a9e63bbe"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/webmozart/glob/zipball/3cbf63d4973cf9d780b93d2da8eec7e4a9e63bbe",
+                "url": "https://api.github.com/repos/webmozarts/glob/zipball/3cbf63d4973cf9d780b93d2da8eec7e4a9e63bbe",
                 "reference": "3cbf63d4973cf9d780b93d2da8eec7e4a9e63bbe",
                 "shasum": ""
             },
@@ -6851,6 +6860,7 @@
                 }
             ],
             "description": "A robust cross-platform utility for normalizing, comparing and modifying file paths.",
+            "abandoned": "symfony/filesystem",
             "time": "2015-12-17T08:42:14+00:00"
         },
         {
@@ -7974,12 +7984,12 @@
                 }
             },
             "autoload": {
-                "psr-4": {
-                    "GuzzleHttp\\Psr7\\": "src/"
-                },
                 "files": [
                     "src/functions_include.php"
-                ]
+                ],
+                "psr-4": {
+                    "GuzzleHttp\\Psr7\\": "src/"
+                }
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
@@ -8126,12 +8136,12 @@
             },
             "type": "library",
             "autoload": {
-                "psr-4": {
-                    "DeepCopy\\": "src/DeepCopy/"
-                },
                 "files": [
                     "src/DeepCopy/deep_copy.php"
-                ]
+                ],
+                "psr-4": {
+                    "DeepCopy\\": "src/DeepCopy/"
+                }
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
@@ -10991,8 +11001,8 @@
             "autoload": {
                 "psr-4": {
                     "Spryker\\": "src/Spryker/",
-                    "SprykerTest\\Shared\\Session\\Helper\\": "tests/SprykerTest/Shared/Session/_support/Helper/",
-                    "SprykerTest\\Yves\\Session\\Helper\\": "tests/SprykerTest/Yves/Session/_support/Helper/"
+                    "SprykerTest\\Yves\\Session\\Helper\\": "tests/SprykerTest/Yves/Session/_support/Helper/",
+                    "SprykerTest\\Shared\\Session\\Helper\\": "tests/SprykerTest/Shared/Session/_support/Helper/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -11345,16 +11355,16 @@
             "autoload": {
                 "psr-4": {
                     "Spryker\\": "src/Spryker/",
-                    "SprykerTest\\Client\\Testify\\Helper\\": "tests/SprykerTest/Client/Testify/_support/Helper/",
-                    "SprykerTest\\Shared\\Testify\\Helper\\": "tests/SprykerTest/Shared/Testify/_support/Helper/",
+                    "SprykerTest\\Zed\\Testify\\Helper\\": "tests/SprykerTest/Zed/Testify/_support/Helper/",
                     "SprykerTest\\Glue\\Testify\\Helper\\": "tests/SprykerTest/Glue/Testify/_support/Helper/",
                     "SprykerTest\\Glue\\Testify\\Tester\\": "tests/SprykerTest/Glue/Testify/_support/Tester/",
                     "SprykerTest\\Yves\\Testify\\Helper\\": "tests/SprykerTest/Yves/Testify/_support/Helper/",
-                    "SprykerTest\\Zed\\Testify\\Helper\\": "tests/SprykerTest/Zed/Testify/_support/Helper/",
-                    "SprykerTest\\Shared\\Testify\\Fixtures\\": "tests/SprykerTest/Shared/Testify/_support/Fixtures/",
+                    "SprykerTest\\Client\\Testify\\Helper\\": "tests/SprykerTest/Client/Testify/_support/Helper/",
+                    "SprykerTest\\Shared\\Testify\\Filter\\": "tests/SprykerTest/Shared/Testify/_support/Filter/",
+                    "SprykerTest\\Shared\\Testify\\Helper\\": "tests/SprykerTest/Shared/Testify/_support/Helper/",
                     "SprykerTest\\Shared\\Testify\\Tester\\": "tests/SprykerTest/Shared/Testify/_support/Tester/",
-                    "SprykerTest\\Shared\\Testify\\StepOverride\\": "tests/SprykerTest/Shared/Testify/_support/StepOverride/",
-                    "SprykerTest\\Shared\\Testify\\Filter\\": "tests/SprykerTest/Shared/Testify/_support/Filter/"
+                    "SprykerTest\\Shared\\Testify\\Fixtures\\": "tests/SprykerTest/Shared/Testify/_support/Fixtures/",
+                    "SprykerTest\\Shared\\Testify\\StepOverride\\": "tests/SprykerTest/Shared/Testify/_support/StepOverride/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -11717,6 +11727,7 @@
                 "mail",
                 "mailer"
             ],
+            "abandoned": "symfony/mailer",
             "time": "2019-11-12T09:31:26+00:00"
         },
         {
